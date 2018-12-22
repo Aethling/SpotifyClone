@@ -28,9 +28,10 @@ class App extends Component {
     return hashParams;
   }
   getNowPlaying() {
-  	spotifyWebApi.getCurrentPlaybackState()
+  	spotifyWebApi.getMyCurrentPlaybackState()
   		.then((response) => {
   			//console.log the response to see all useful info to use;
+  			console.log(response);
   			this.setState({
   				nowPlaying: {
   					name: response.item.name,
@@ -47,7 +48,7 @@ render() {
 			</a>
 			<div>Now Playing: {this.state.nowPlaying.name}</div>
 			<div>
-				<a src={this.state.nowPlaying.image} style={{width: 100}}></a>
+				<img src={this.state.nowPlaying.image} style={{width: 100}}></img>
 			</div>
 			<button onClick={() => this.getNowPlaying()}>Check Now Playing</button>
 		</div>
