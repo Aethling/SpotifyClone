@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Spotify from 'spotify-web-api-js';
+import Dashboard from './components/Dashboard';
 
 const spotifyWebApi = new Spotify();
 
@@ -9,15 +10,13 @@ class App extends Component {
 		const params = this.getHashParams();
 		this.state = {
 			loggedIn: params.access_token ? true : false,
-			nowPlaying: {
-				name: 'Not Checked',
-				image: ''
-			}
+			isDashboard: false
 		}
 		if (params.access_token) {
 			spotifyWebApi.setAccessToken(params.access_token);
 		}
 	}
+
   getHashParams() {
     var hashParams = {};
     var e, r = /([^&;=]+)=?([^&;]*)/g,
@@ -27,33 +26,44 @@ class App extends Component {
     }
     return hashParams;
   }
-  getNowPlaying() {
-  	spotifyWebApi.getMyCurrentPlaybackState()
-  		.then((response) => {
-  			//console.log the response to see all useful info to use;
-  			console.log(response);
-  			this.setState({
-  				nowPlaying: {
-  					name: response.item.name,
-  					image: response.item.album.images[0].url 
-  				}
-  			})
-  		})
-  }
-render() {
-	return (
-		<div className="App">
-			<a href="http://localhost:8888">
-				<button>Login with Spotify</button>
-			</a>
-			<div>Now Playing: {this.state.nowPlaying.name}</div>
-			<div>
-				<img src={this.state.nowPlaying.image} style={{width: 100}}></img>
-			</div>
-			<button onClick={() => this.getNowPlaying()}>Check Now Playing</button>
-		</div>
-	)
-}
+  // getNowPlaying() {
+  // 	spotifyWebApi.getMyCurrentPlaybackState()
+  // 		.then((response) => {
+  // 			//console.log the response to see all useful info to use;
+  // 			console.log(response);
+  // 			this.setState({
+  // 				nowPlaying: {
+  // 					name: response.item.name,
+  // 					image: response.item.album.images[0].url 
+  // 				}
+  // 			})
+  // 		})
+  // }
+			// <div>Now Playing: {this.state.nowPlaying.name}</div>
+			// <div>
+			// 	<img src={this.state.nowPlaying.image} style={{width: 100}}></img>
+			// </div>
+	gotoDashboard() {
+		this.setState({
+			isDashboard: true
+		})
+	}
+	render() {
+		if (this.state.isDashboard) {
+			return (
+				<Dashboard />
+			)
+		} else {
+			return (
+				<div className="welcomePage">
+					<a href="http://localhost:8888">
+						<button>Login with Spotify</button>
+					</a>
+					<button onClick={() => this.gotoDashboard()}>Go to Dashboard</button>
+				</div>
+			)
+		}
+	}
 };
 
 export default App;

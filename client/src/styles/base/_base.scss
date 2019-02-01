@@ -1,16 +1,57 @@
+body,
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
 html {
   font-size: 62.5%;
 }
 
-body {
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: $m-size;
-}
-
 button {
   cursor: pointer;
+  padding: 5px;
+  font-size: $m-size;
 }
 
 button:disabled {
   cursor: default;
+}
+body {
+    font-family: 'Proxima Nova', Georgia, sans-serif;
+    background: rgb(24, 24, 24);
+    color: #fff;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20;
+}
+
+.app-container {
+  display: flex;
+  position: relative;
+}
+
+.left-side-section {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  bottom: 10px;
+  width: 180px;
+  overflow-y: auto;
+}
+
+.main-section {
+  width: 900px;
+  position: relative;
+  left: 200px;
+  padding: 0 10px;
+}
+
+.main-section-container {
+  position: relative;
+  top: 50px;
+  padding-bottom: 100px;
 }
