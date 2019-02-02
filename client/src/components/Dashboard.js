@@ -51,7 +51,7 @@ render() {
 
 		        <div className='main-section'>
 		          <div className='main-section-container'>
-		          	{this.state.browseData.map(category => <img className="browseIcon" src={category.icons[0].url}/> )}
+		          	{this.state.browseData.map((category, index) => <img key={index} className="browseIcon" src={category.icons[0].url}/> )}
 		          	<img src={this.state.myData.images[0].url} />
 		          </div>
 		        </div>
