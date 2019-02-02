@@ -10,12 +10,15 @@ class App extends Component {
 		const params = this.getHashParams();
 		this.state = {
 			loggedIn: params.access_token ? true : false,
-			isDashboard: false
+			isDashboard: false,
+			token: params.access_token
 		}
 		if (params.access_token) {
 			spotifyWebApi.setAccessToken(params.access_token);
 		}
 	}
+
+
 
   getHashParams() {
     var hashParams = {};
@@ -51,7 +54,7 @@ class App extends Component {
 	render() {
 		if (this.state.isDashboard) {
 			return (
-				<Dashboard />
+				<Dashboard token={this.state.token}/>
 			)
 		} else {
 			return (

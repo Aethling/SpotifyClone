@@ -8,11 +8,14 @@ class Dashboard extends Component {
 		}
 	componentDidMount() {
 
-		fetch('https://api.spotify.com/v1/browse/categories')
+		console.log(this.props.token);
+		fetch('https://api.spotify.com/v1/me', {
+			headers: {'Authorization': 'Bearer ' + this.props.token}
+		})
 			.then(checkStatus)
 			.then(blob => blob.json())
 			.then(data => this.setState({data: data, isLoading: false}))
-			.then(console.log(this.state));
+			.then(() => console.log(this.state.data));
 			//this will call a function that displays the data
 		
 		function checkStatus(response) {
@@ -41,6 +44,7 @@ render() {
 			</div>
 			)
 	} else { 
+		// console.log(this.state);
 		return (
 		  <div className='App'>
 		      <div className='app-container'>
@@ -50,7 +54,8 @@ render() {
 		        </div>
 
 		        <div className='main-section'>
-		          <div className='main-section-container'>
+		          <div className='main-section-container'> 
+		          	<img src={this.state.data.images[0].url}/>
 		          </div>
 		        </div>
 
