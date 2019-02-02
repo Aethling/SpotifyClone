@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const SideMenu = () => {
-	return (
-		<ul className='side-menu-container'>
-			<li className='side-menu-item browse'>Browse</li>
-      <li className='side-menu-item radio'>Radio</li>
-      <h3 className='user-library-header'>Your Library</h3>
-      <li className="side-menu-item">Recently Played</li>
-      <li className="side-menu-item">Songs</li>
-      <li className="side-menu-item">Albums</li>
-      <li className="side-menu-item">Artists</li>
-      <h3 className="user-library-header">Playlists</h3>
-      <li className="side-menu-item">Discover Weekly</li>
-      <li className="side-menu-item">Your Playlist</li>
-    </ul>
-	)
+class SideMenu extends Component {
+	
+	handleBrowseClick() {
+		fetch('https://api.spotify.com/v1/browse/categories', {
+					headers: {'Authorization': 'Bearer ' + this.props.token}
+				}).then(blob => blob.json())
+					.then(data => console.log(data))
+					.catch(err => console.log(err))
+	}
+
+	
+	
+	render () {
+		return (
+			<ul className='side-menu-container'>
+				<li className='side-menu-item browse' onClick={this.handleBrowseClick}>Browse</li>
+	      <li className='side-menu-item radio'>Radio</li>
+	      <h3 className='user-library-header'>Your Library</h3>
+	      <li className="side-menu-item">Recently Played</li>
+	      <li className="side-menu-item">Songs</li>
+	      <li className="side-menu-item">Albums</li>
+	      <li className="side-menu-item">Artists</li>
+	      <h3 className="user-library-header">Playlists</h3>
+	      <li className="side-menu-item">Discover Weekly</li>
+	      <li className="side-menu-item">Your Playlist</li>
+	    </ul>
+		)
+	}
 }
+
 export default SideMenu;
