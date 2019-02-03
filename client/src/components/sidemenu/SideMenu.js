@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link }from 'react-router-dom';
 
 class SideMenu extends Component {
 	
@@ -21,7 +22,9 @@ class SideMenu extends Component {
 	      <li className="side-menu-item">Recently Played</li>
 	      <li className="side-menu-item">Songs</li>
 	      <li className="side-menu-item">Albums</li>
-	      <li className="side-menu-item">Artists</li>
+
+	      <li className="side-menu-item"><Link to="/artists">Artists</Link></li>
+	      
 	      <h3 className="user-library-header">Playlists</h3>
 	      <li className="side-menu-item">Discover Weekly</li>
 	      <li className="side-menu-item">Your Playlist</li>
