@@ -10,6 +10,8 @@ import SideMenu from '../components/sidemenu/SideMenu';
 // import PrivateRoute from '../config/utils';
 
 
+//this whole component is currently not being used!
+
 const PrivateRoute = ({ component: Component, user }) => (
   <Route render={props => (!user ? <Component {...props} /> : <Redirect to="/" />)} />
 );

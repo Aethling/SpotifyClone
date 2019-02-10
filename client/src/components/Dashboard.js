@@ -57,22 +57,22 @@ render() {
 			return (
 			  <div className='App'>
         	<BrowserRouter>
-						<div>
-							 <SideMenu token={this.props.token}/>
-				      
-						<div className="main-section">
-						<div className="main-section-container">
-							<Switch>
-								<Route path="/" exact render={ () => <Home myData={this.state.myData}/>}/>
-								<Route path="/browse" render={ () => <Browse browseData={this.state.browseData}/> }/>
-								<Route path="/artists" component={Artists} />
-				        <Route path="/notfound" component={NotFoundPage} />
-							</Switch>
+        		<div>
+							<div className="left-side-section">
+								 <SideMenu token={this.props.token}/>
+					    </div>
+							<div className="main-section">
+							<div className="main-section-container">
+								<Switch>
+									<Route path="/" exact render={ () => <Home myData={this.state.myData}/>}/>
+									<Route path="/browse" render={ () => <Browse browseData={this.state.browseData}/> }/>
+									<Route path="/artists" component={Artists} />
+					        <Route path="/notfound" component={NotFoundPage} />
+								</Switch>
 
+								</div>
 							</div>
-						</div>
-						</div>
-						
+						</div>	
 					</BrowserRouter>
 
         </div>
