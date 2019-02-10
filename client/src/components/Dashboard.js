@@ -62,8 +62,8 @@ render() {
 				      
 
 							<Switch>
-								<Route path="/" component={Home} exact={true} />
-								<Route path="/browse" component={Browse} />
+								<Route path="/" exact render={ () => <Home myData={this.state.myData}/>}/>
+								<Route path="/browse" render={ () => <Browse browseData={this.state.browseData}/> }/>
 								<Route path="/artists" component={Artists} />
 				        <Route path="/notfound" component={NotFoundPage} />
 							</Switch>
@@ -72,7 +72,6 @@ render() {
 						
 					</BrowserRouter>
 
-			          	{this.state.myData ? <img src={this.state.myData.images[0].url}/> : <h2>Loading</h2>  }
         </div>
 			       
 			)

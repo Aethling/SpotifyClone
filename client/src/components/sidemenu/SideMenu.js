@@ -16,7 +16,7 @@ class SideMenu extends Component {
 	render () {
 		return (
 			<ul className='side-menu-container'>
-				<li className='side-menu-item browse' onClick={this.handleBrowseClick}>Browse</li>
+				<li className='side-menu-item browse'><Link to="/browse">Browse</Link></li>
 	      <li className='side-menu-item radio'>Radio</li>
 	      <h3 className='user-library-header'>Your Library</h3>
 	      <li className="side-menu-item">Recently Played</li>

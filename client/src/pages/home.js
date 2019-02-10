@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Home = () => {
+const Home = (props) => {
 	return (
 		<div>
-			<h2>Home Page</h2>
+    	{props.myData ? <img src={props.myData.images[0].url}/> : <h2>Loading</h2>  }
 		</div>
 	)
 }
