@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import SideMenu from './sidemenu/SideMenu';
+import Browse from '../pages/browse';
+import Home from '../pages/home';
+import AppRouter from '../routers/AppRouter';
 
 class Dashboard extends Component {
 	state = {
@@ -41,26 +44,35 @@ render() {
 			)
 	} else { 
 		console.log(this.state);
-		return (
-		  <div className='App'>
-		      <div className='app-container'>
+		if (this.state.browseData) {
+			          	// <Browse browseData={this.state.browseData}/>
+			return (
+			  <div className='App'>
+			      <div className='app-container'>
 
-		        <div className='left-side-section'>
-		        	<SideMenu token={this.props.token}/>
-		        </div>
+			        <div className='left-side-section'>
+			        	<SideMenu token={this.props.token}/>
+			        </div>
 
-		        <div className='main-section'>
-		          <div className='main-section-container'>
-		          	{this.state.browseData.map((category, index) => <img key={index} className="browseIcon" src={category.icons[0].url}/> )}
-		          	<img src={this.state.myData.images[0].url} />
-		          </div>
-		        </div>
+			        <div className='main-section'>
+			          <div className='main-section-container'>
+			          	<Home />
+			          	<AppRouter token={this.props.token}/>
+			          	{this.state.myData ? <img src={this.state.myData.images[0].url}/> : <h2>Loading</h2>  }/>
+			          </div>
+			        </div>
 
-		      </div>
-		    </div>
-		)
+			      </div>
+			    </div>
+			)
+		} else {
+			return (
+				<div>
+					<h2>Loading Data</h2>
+				</div>
+			)
+		}
 	}
 }
 }
-
 export default Dashboard
