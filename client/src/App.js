@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Spotify from 'spotify-web-api-js';
 import Dashboard from './components/Dashboard';
 
-const spotifyWebApi = new Spotify();
+// const spotifyWebApi = new Spotify();
 
 class App extends Component {
 	constructor() {
@@ -13,12 +13,10 @@ class App extends Component {
 			isDashboard: false,
 			token: params.access_token
 		}
-		if (params.access_token) {
-			spotifyWebApi.setAccessToken(params.access_token);
-		}
+		// if (params.access_token) {
+		// 	spotifyWebApi.setAccessToken(params.access_token);
+		// }
 	}
-
-
 
   getHashParams() {
     var hashParams = {};

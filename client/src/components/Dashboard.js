@@ -5,15 +5,39 @@ import Artists from '../pages/Artists';
 import Home from '../pages/home';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import NotFoundPage from '../pages/NotFoundPage';
+import Spotify from 'spotify-web-api-js';
+
+const spotifyWebApi = new Spotify();
 
 
+
+		function getNowPlaying(props) {
+			if (props.token) {
+					spotifyWebApi.setAccessToken(props.token);
+			}
+			console.log(spotifyWebApi.setAccessToken);
+	  	spotifyWebApi.getMyCurrentPlaybackState()
+	  		.then((response) => {
+	  			//console.log the response to see all useful info to use;
+	  			console.log(response);
+	  			this.setState({
+	  				nowPlaying: {
+	  					name: response.item.name,
+	  					image: response.item.album.images[0].url 
+	  				}
+	  			})
+	  		})
+	  }
 
 class Dashboard extends Component {
 	state = {
 			myData: null,
 			isLoading: true,
-			browseData: null
+			browseData: null,
+			nowPlaying: null
+
 		}
+
 	componentDidMount() {
 
 		fetch('https://api.spotify.com/v1/me', {
@@ -37,7 +61,11 @@ class Dashboard extends Component {
 				return Promise.reject(new Error(response.statusText));
 			}
 		}
+		
+getNowPlaying(this.props);
 	}
+
+
 	// const PrivateRoute = ({ component: Component, user }) => {
 	// 	return (
 	//   <Route render={props => (!user ? <Component {...props} /> : <Redirect to="/" />)} />
