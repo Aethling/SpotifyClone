@@ -8,4 +8,4 @@ import App from './App';
 // import { createStore } from 'redux';
 import AppRouter from './routers/AppRouter';
 
-ReactDOM.render(<AppRouter />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));

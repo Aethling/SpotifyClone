@@ -25,9 +25,9 @@
   padding: 0 0 5px 0;
   letter-spacing: 1px;
 }
-// .side-menu-container .active:before {
-// 	content: "";
-// 	border-left: 3px solid #1db954;
-// 	position: relative;
-// 	left: -18px;
-// }
+.side-menu-container .active:before {
+	content: "";
+	border-left: 3px solid #1db954;
+	position: relative;
+	left: -18px;
+}
