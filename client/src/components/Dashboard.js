@@ -60,8 +60,8 @@ render() {
 						<div>
 							 <SideMenu token={this.props.token}/>
 				      
-						<div className="main-section-container">
 						<div className="main-section">
+						<div className="main-section-container">
 							<Switch>
 								<Route path="/" exact render={ () => <Home myData={this.state.myData}/>}/>
 								<Route path="/browse" render={ () => <Browse browseData={this.state.browseData}/> }/>
