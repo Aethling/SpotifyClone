@@ -9,33 +9,12 @@ import Spotify from 'spotify-web-api-js';
 
 const spotifyWebApi = new Spotify();
 
-
-
-		function getNowPlaying(props) {
-			if (props.token) {
-					spotifyWebApi.setAccessToken(props.token);
-			}
-			console.log(spotifyWebApi.setAccessToken);
-	  	spotifyWebApi.getMyCurrentPlaybackState()
-	  		.then((response) => {
-	  			//console.log the response to see all useful info to use;
-	  			console.log(response);
-	  			this.setState({
-	  				nowPlaying: {
-	  					name: response.item.name,
-	  					image: response.item.album.images[0].url 
-	  				}
-	  			})
-	  		})
-	  }
-
 class Dashboard extends Component {
 	state = {
 			myData: null,
 			isLoading: true,
 			browseData: null,
 			nowPlaying: null
-
 		}
 
 	componentDidMount() {
@@ -61,9 +40,27 @@ class Dashboard extends Component {
 				return Promise.reject(new Error(response.statusText));
 			}
 		}
+
+		function getNowPlaying(props) {
+			if (props.token) {
+					spotifyWebApi.setAccessToken(props.token);
+			}
+			console.log(spotifyWebApi.setAccessToken);
+	  	spotifyWebApi.getMyCurrentPlaybackState()
+	  		.then((response) => {
+	  			//console.log the response to see all useful info to use;
+	  			console.log(response);
+	  			this.setState({
+	  				nowPlaying: {
+	  					name: response.item.name,
+	  					image: response.item.album.images[0].url 
+	  				}
+	  			})
+	  		})
+	  }
 		
-getNowPlaying(this.props);
 	}
+	// getNowPlaying(props);
 
 
 	// const PrivateRoute = ({ component: Component, user }) => {
@@ -80,6 +77,7 @@ render() {
 			)
 	} else { 
 		console.log(this.state);
+		
 		if (this.state.browseData) {
 			          	// <Browse browseData={this.state.browseData}/>
 			return (
