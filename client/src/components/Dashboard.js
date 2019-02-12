@@ -13,7 +13,6 @@ class Dashboard extends Component {
 	state = {
 			myData: null,
 			isLoading: true,
-			browseData: null,
 			nowPlaying: null
 		}
 
@@ -26,13 +25,6 @@ class Dashboard extends Component {
 			.then(blob => blob.json())
 			.then(data => this.setState({myData: data, isLoading: false}))
 
-		fetch('https://api.spotify.com/v1/browse/categories', {
-				headers: {'Authorization': 'Bearer ' + this.props.token}
-		})
-			.then(checkStatus)
-			.then(blob => blob.json())
-			.then(data => this.setState({browseData: data.categories.items, isLoading: false}))
-		
 		function checkStatus(response) {
 			if (response.ok) {
 				return Promise.resolve(response);
@@ -70,11 +62,9 @@ render() {
 			<div>
 				<p>Page is loading</p>
 			</div>
-			)
+			);
 	} else { 
 		console.log(this.state);
-
-		if (this.state.browseData) {
 			return (
 			  <div className='App'>
 							<button onClick={this.getNowPlaying}>getNowPlaying</button>
@@ -87,7 +77,7 @@ render() {
 							<div className="main-section-container">
 								<Switch>
 									<Route path="/" exact render={ () => <HomePage myData={this.state.myData}/>}/>
-									<Route path="/browse" render={ () => <BrowsePage browseData={this.state.browseData}/> }/>
+									<Route path="/browse" render={ () => <BrowsePage token={this.props.token}/> }/>
 									<Route path="/artists" component={ArtistsPage} />
 					        <Route path="/notfound" component={NotFoundPage} />
 								</Switch>
@@ -100,13 +90,6 @@ render() {
         </div>
 			       
 			)
-		} else {
-			return (
-				<div>
-					<h2>Loading Data</h2>
-				</div>
-			)
-		}
 	}
 }
 }
