@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import Browse from '../pages/browse';
+import BrowsePage from '../pages/BrowsePage';
 import Dashboard from '../components/Dashboard';
 import NotFoundPage from '../pages/NotFoundPage';
 import Login from '../App';
-import Artists from '../pages/Artists';
-import Home from '../pages/home';
+import ArtistsPage from '../pages/ArtistsPage';
+import HomePage from '../pages/HomePage';
 import SideMenu from '../components/sidemenu/SideMenu';
 // import PrivateRoute from '../config/utils';
 
@@ -25,8 +25,8 @@ const AppRouter = (props) => (
 
 			<Switch>
 				<Route path="/" component={Home} exact={true} />
-				<PrivateRoute path="/browse" component={Browse} />
-				<PrivateRoute path="/artists" component={Artists} />
+				<PrivateRoute path="/browse" component={BrowsePage} />
+				<PrivateRoute path="/artists" component={ArtistsPage} />
         <PrivateRoute path="/notfound" component={NotFoundPage} />
 			</Switch>
 			

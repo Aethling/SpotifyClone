@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import SideMenu from './sidemenu/SideMenu';
-import Browse from '../pages/browse';
-import Artists from '../pages/Artists';
-import Home from '../pages/home';
+import BrowsePage from '../pages/BrowsePage';
+import ArtistsPage from '../pages/ArtistsPage';
+import HomePage from '../pages/HomePage';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import NotFoundPage from '../pages/NotFoundPage';
 import Spotify from 'spotify-web-api-js';
@@ -40,28 +40,24 @@ class Dashboard extends Component {
 				return Promise.reject(new Error(response.statusText));
 			}
 		}
-
-		function getNowPlaying(props) {
-			if (props.token) {
-					spotifyWebApi.setAccessToken(props.token);
-			}
-			console.log(spotifyWebApi.setAccessToken);
-	  	spotifyWebApi.getMyCurrentPlaybackState()
-	  		.then((response) => {
-	  			//console.log the response to see all useful info to use;
-	  			console.log(response);
-	  			this.setState({
-	  				nowPlaying: {
-	  					name: response.item.name,
-	  					image: response.item.album.images[0].url 
-	  				}
-	  			})
-	  		})
-	  }
-		
 	}
-	// getNowPlaying(props);
-
+	getNowPlaying = (props) => {
+		if (props.token) {
+				spotifyWebApi.setAccessToken(props.token);
+		}
+		console.log(spotifyWebApi.setAccessToken);
+  	spotifyWebApi.getMyCurrentPlaybackState()
+  		.then((response) => {
+  			//console.log the response to see all useful info to use;
+  			console.log(response);
+  			this.setState({
+  				nowPlaying: {
+  					name: response.item.name,
+  					image: response.item.album.images[0].url 
+  				}
+  			})
+  		})
+  }
 
 	// const PrivateRoute = ({ component: Component, user }) => {
 	// 	return (
@@ -77,11 +73,11 @@ render() {
 			)
 	} else { 
 		console.log(this.state);
-		
+
 		if (this.state.browseData) {
-			          	// <Browse browseData={this.state.browseData}/>
 			return (
 			  <div className='App'>
+							<button onClick={this.getNowPlaying}>getNowPlaying</button>
         	<BrowserRouter>
         		<div>
 							<div className="left-side-section">
@@ -90,9 +86,9 @@ render() {
 							<div className="main-section">
 							<div className="main-section-container">
 								<Switch>
-									<Route path="/" exact render={ () => <Home myData={this.state.myData}/>}/>
-									<Route path="/browse" render={ () => <Browse browseData={this.state.browseData}/> }/>
-									<Route path="/artists" component={Artists} />
+									<Route path="/" exact render={ () => <HomePage myData={this.state.myData}/>}/>
+									<Route path="/browse" render={ () => <BrowsePage browseData={this.state.browseData}/> }/>
+									<Route path="/artists" component={ArtistsPage} />
 					        <Route path="/notfound" component={NotFoundPage} />
 								</Switch>
 
