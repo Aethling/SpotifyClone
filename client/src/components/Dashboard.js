@@ -65,33 +65,31 @@ render() {
 			</div>
 			);
 	} else { 
-		console.log(this.state);
-							// <button onClick={this.getNowPlaying}>getNowPlaying</button>
-			return (
-			  <div className='App'>
-        	<BrowserRouter>
-        		<div>
-							<div className="left-side-section">
-								 <SideMenu token={this.props.token}/>
-					    </div>
-							<div className="main-section">
-							<div className="main-section-container">
-								<Switch>
-									<Route path="/" exact render={ () => <HomePage myData={this.props.token}/>}/>
-									<Route path="/browse" render={ () => <BrowsePage token={this.props.token}/> }/>
-									<Route path="/recent" render={ () => <RecentlyPlayedPage token={this.props.token}/> }/>
-									<Route path="/artists" component={ArtistsPage} />
-					        <Route path="/notfound" component={NotFoundPage} />
-								</Switch>
+		return (
+		  <div className='App'>
+      	<BrowserRouter>
+      		<div>
+						<div className="left-side-section">
+							 <SideMenu token={this.props.token}/>
+				    </div>
+						<div className="main-section">
+						<div className="main-section-container">
+							<Switch>
+								<Route path="/" exact render={ () => <HomePage token={this.props.token}/>}/>
+								<Route path="/browse" render={ () => <BrowsePage token={this.props.token}/> }/>
+								<Route path="/recent" render={ () => <RecentlyPlayedPage token={this.props.token}/> }/>
+								<Route path="/artists" component={ArtistsPage} />
+				        <Route path="/notfound" component={NotFoundPage} />
+							</Switch>
 
-								</div>
 							</div>
-						</div>	
-					</BrowserRouter>
+						</div>
+					</div>	
+				</BrowserRouter>
 
-        </div>
-			       
-			)
+      </div>
+		       
+		)
 	}
 }
 }
