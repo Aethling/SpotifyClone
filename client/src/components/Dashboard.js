@@ -3,11 +3,12 @@ import SideMenu from './sidemenu/SideMenu';
 import BrowsePage from '../pages/BrowsePage';
 import ArtistsPage from '../pages/ArtistsPage';
 import HomePage from '../pages/HomePage';
+import RecentlyPlayedPage from '../pages/RecentlyPlayedPage';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import NotFoundPage from '../pages/NotFoundPage';
 import Spotify from 'spotify-web-api-js';
 
-const spotifyWebApi = new Spotify();
+// const spotifyWebApi = new Spotify();
 
 class Dashboard extends Component {
 	state = {
@@ -33,23 +34,23 @@ class Dashboard extends Component {
 			}
 		}
 	}
-	getNowPlaying = (props) => {
-		if (props.token) {
-				spotifyWebApi.setAccessToken(props.token);
-		}
-		console.log(spotifyWebApi.setAccessToken);
-  	spotifyWebApi.getMyCurrentPlaybackState()
-  		.then((response) => {
-  			//console.log the response to see all useful info to use;
-  			console.log(response);
-  			this.setState({
-  				nowPlaying: {
-  					name: response.item.name,
-  					image: response.item.album.images[0].url 
-  				}
-  			})
-  		})
-  }
+	// getNowPlaying = (props) => {
+	// 	if (props.token) {
+	// 			spotifyWebApi.setAccessToken(props.token);
+	// 	}
+	// 	console.log(spotifyWebApi.setAccessToken);
+ //  	spotifyWebApi.getMyCurrentPlaybackState()
+ //  		.then((response) => {
+ //  			//console.log the response to see all useful info to use;
+ //  			console.log(response);
+ //  			this.setState({
+ //  				nowPlaying: {
+ //  					name: response.item.name,
+ //  					image: response.item.album.images[0].url 
+ //  				}
+ //  			})
+ //  		})
+ //  }
 
 	// const PrivateRoute = ({ component: Component, user }) => {
 	// 	return (
@@ -65,9 +66,9 @@ render() {
 			);
 	} else { 
 		console.log(this.state);
+							// <button onClick={this.getNowPlaying}>getNowPlaying</button>
 			return (
 			  <div className='App'>
-							<button onClick={this.getNowPlaying}>getNowPlaying</button>
         	<BrowserRouter>
         		<div>
 							<div className="left-side-section">
@@ -76,8 +77,9 @@ render() {
 							<div className="main-section">
 							<div className="main-section-container">
 								<Switch>
-									<Route path="/" exact render={ () => <HomePage myData={this.state.myData}/>}/>
+									<Route path="/" exact render={ () => <HomePage myData={this.props.token}/>}/>
 									<Route path="/browse" render={ () => <BrowsePage token={this.props.token}/> }/>
+									<Route path="/recent" render={ () => <RecentlyPlayedPage token={this.props.token}/> }/>
 									<Route path="/artists" component={ArtistsPage} />
 					        <Route path="/notfound" component={NotFoundPage} />
 								</Switch>

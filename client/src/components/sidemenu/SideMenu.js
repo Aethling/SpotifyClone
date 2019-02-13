@@ -19,7 +19,7 @@ class SideMenu extends Component {
 				<li className='side-menu-item browse'><Link to="/browse">Browse</Link></li>
 	      <li className='side-menu-item radio'>Radio</li>
 	      <h3 className='user-library-header'>Your Library</h3>
-	      <li className="side-menu-item">Recently Played</li>
+	      <li className="side-menu-item"><Link to="/recent">Recently Played</Link></li>
 	      <li className="side-menu-item">Songs</li>
 	      <li className="side-menu-item">Albums</li>
 
