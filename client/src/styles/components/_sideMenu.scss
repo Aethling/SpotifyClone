@@ -3,6 +3,14 @@
   color: rgb(179, 179, 179);
   margin: 0;
 }
+a {
+  color: rgb(179, 179, 179);
+  text-decoration: none;
+}
+// a:hover {
+//   color: #fff;
+  
+// }
 .side-menu-item {
 	list-style-type: none;
 	line-height: 28px;
@@ -12,7 +20,7 @@
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
-.side-menu-item:hover {
+.side-menu-item:hover, a:hover {
   color: #fff;
 }
 .user-library-header {
