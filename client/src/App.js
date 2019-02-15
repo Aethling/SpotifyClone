@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Spotify from 'spotify-web-api-js';
+// import Spotify from 'spotify-web-api-js';
 import Dashboard from './components/Dashboard';
 
 // const spotifyWebApi = new Spotify();
