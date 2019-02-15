@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 // import Spotify from 'spotify-web-api-js';
+import { connect } from 'react-redux'
 import Dashboard from './components/Dashboard';
+import { setToken } from './actions/tokenActions';
 
-// const spotifyWebApi = new Spotify();
+//call gethashParams in constructor and sets the token
+//and the logged in
+//action to set token
+//action to see if logged in or not
 
 class App extends Component {
 	constructor() {
 		super();
 		const params = this.getHashParams();
-		this.state = {
-			loggedIn: params.access_token ? true : false,
-			isDashboard: false,
-			token: params.access_token
-		}
-		// if (params.access_token) {
-		// 	spotifyWebApi.setAccessToken(params.access_token);
+		// this.state = {
+		// 	isLoggedIn: params.access_token ? true : false,
+		// 	token: params.access_token
 		// }
 	}
 
@@ -25,32 +26,17 @@ class App extends Component {
     while ( e = r.exec(q)) {
        hashParams[e[1]] = decodeURIComponent(e[2]);
     }
-    return hashParams;
+    // return hashParams;
+    if (hashParams.access_token) {
+    	setToken(hashParams.access_token)
+    	return true;
+    } else {
+    	return false;
+    }
   }
-  // getNowPlaying() {
-  // 	spotifyWebApi.getMyCurrentPlaybackState()
-  // 		.then((response) => {
-  // 			//console.log the response to see all useful info to use;
-  // 			console.log(response);
-  // 			this.setState({
-  // 				nowPlaying: {
-  // 					name: response.item.name,
-  // 					image: response.item.album.images[0].url 
-  // 				}
-  // 			})
-  // 		})
-  // }
-			// <div>Now Playing: {this.state.nowPlaying.name}</div>
-			// <div>
-			// 	<img src={this.state.nowPlaying.image} style={{width: 100}}></img>
-			// </div>
-	gotoDashboard() {
-		this.setState({
-			isDashboard: true
-		})
-	}
+
 	render() {
-		if (this.state.isDashboard) {
+		if (this.props.isLoggedIn) {
 			return (
 				<Dashboard token={this.state.token}/>
 			)
@@ -60,11 +46,16 @@ class App extends Component {
 					<a href="http://localhost:8888">
 						<button>Login with Spotify</button>
 					</a>
-					<button onClick={() => this.gotoDashboard()}>Go to Dashboard</button>
 				</div>
 			)
 		}
 	}
 };
 
-export default App;
+const mapStateToProps = state => {
+	return {
+		isLoggedIn: state.token ? true : false,
+		token: state.token
+	}
+}
+export default connect(mapStateToProps)(App);

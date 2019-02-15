@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Spotify from 'spotify-web-api-js';
+// import Spotify from 'spotify-web-api-js';
 
-const spotifyWebApi = new Spotify();
+// const spotifyWebApi = new Spotify();
 
 
 class HomePage extends Component {

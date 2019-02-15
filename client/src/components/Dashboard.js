@@ -6,7 +6,7 @@ import HomePage from '../pages/HomePage';
 import RecentlyPlayedPage from '../pages/RecentlyPlayedPage';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import NotFoundPage from '../pages/NotFoundPage';
-import Spotify from 'spotify-web-api-js';
+// import Spotify from 'spotify-web-api-js';
 
 // const spotifyWebApi = new Spotify();
 

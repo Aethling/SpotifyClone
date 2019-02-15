@@ -10,12 +10,7 @@
     "dev-server": "webpack-dev-server"
   },
   "dependencies": {
-    "babel-cli": "6.24.1",
-    "babel-core": "^6.26.3",
-    "babel-loader": "7",
     "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "6.24.1",
     "css-loader": "^2.1.0",
     "live-server": "^1.2.0",
     "node-sass": "4.5.3",
@@ -29,13 +24,18 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "sass-loader": "6.0.6",
-    "spotify-web-api-js": "^1.1.1",
     "style-loader": "0.18.2",
     "validator": "8.0.0",
     "webpack": "^4.29.3",
     "webpack-dev-server": "^3.1.14"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/plugin-syntax-object-rest-spread": "^7.2.0",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
     "webpack-cli": "^3.2.3"
   }
 }
