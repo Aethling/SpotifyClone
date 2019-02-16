@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
+import { fetchRecentlyPlayed } from '../action/recentlyPlayed';
+import { connect } from 'react-redux';
 // import Spotify from 'spotify-web-api-js';
 
 // const spotifyWebApi = new Spotify();
 
 
 class RecentlyPlayedPage extends Component {
-	state = {
-		myData: null,
-		isLoading: true
-	}
+	
 
 	componentDidMount() {
-			fetch('https://api.spotify.com/v1/me/player/recently-played', {
-					headers: {'Authorization': 'Bearer ' + this.props.token}
-				})
-					.then(checkStatus)
-					.then(blob => blob.json())
-					.then(data => this.setState({myData: data, isLoading: false}))
+		this.props.dispatch(fetchRecentlyPlayed(this.props.token))
+			// fetch('https://api.spotify.com/v1/me/player/recently-played', {
+			// 		headers: {'Authorization': 'Bearer ' + this.props.token}
+			// 	})
+			// 		.then(checkStatus)
+			// 		.then(blob => blob.json())
+			// 		.then(data => this.setState({myData: data, isLoading: false}))
 
-				function checkStatus(response) {
-					if (response.ok) {
-						return Promise.resolve(response);
-					} else {
-						return Promise.reject(new Error(response.statusText));
-					}
-			}
+			// 	function checkStatus(response) {
+			// 		if (response.ok) {
+			// 			return Promise.resolve(response);
+			// 		} else {
+			// 			return Promise.reject(new Error(response.statusText));
+			// 		}
+			// }
 		}
 
 	 
@@ -48,4 +48,4 @@ render() {
 	}
 }
 }
-export default RecentlyPlayedPage;
+export default connect(mapSateToProps)(RecentlyPlayedPage);
