@@ -31,7 +31,7 @@ class App extends Component {
 	render() {
 		if (this.props.isLoggedIn) {
 			return (
-				<Dashboard token={this.state.token}/>
+				<Dashboard token={this.props.token}/>
 			)
 		} else {
 			return (
@@ -47,7 +47,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
 	return {
-		// isLoggedIn: state.token ? true : false,
+		isLoggedIn: state.isLoggedIn,
 		token: state.token
 	}
 }
