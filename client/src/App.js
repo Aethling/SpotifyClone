@@ -10,30 +10,23 @@ import { setToken } from './actions/tokenActions';
 //action to see if logged in or not
 
 class App extends Component {
-	constructor() {
-		super();
-		const params = this.getHashParams();
-		// this.state = {
-		// 	isLoggedIn: params.access_token ? true : false,
-		// 	token: params.access_token
-		// }
-	}
 
-  getHashParams() {
-    var hashParams = {};
-    var e, r = /([^&;=]+)=?([^&;]*)/g,
-        q = window.location.hash.substring(1);
-    while ( e = r.exec(q)) {
-       hashParams[e[1]] = decodeURIComponent(e[2]);
-    }
-    // return hashParams;
-    if (hashParams.access_token) {
-    	setToken(hashParams.access_token)
-    	return true;
-    } else {
-    	return false;
-    }
-  }
+	componentDidMount() {
+
+	    var hashParams = {};
+	    var e, r = /([^&;=]+)=?([^&;]*)/g,
+	        q = window.location.hash.substring(1);
+	    while ( e = r.exec(q)) {
+	       hashParams[e[1]] = decodeURIComponent(e[2]);
+	    }
+	    // return hashParams;
+	    if (hashParams.access_token) {
+	    	this.props.dispatch(setToken(hashParams.access_token));
+	    } 
+	}
+ 
+
+
 
 	render() {
 		if (this.props.isLoggedIn) {
@@ -54,7 +47,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
 	return {
-		isLoggedIn: state.token ? true : false,
+		// isLoggedIn: state.token ? true : false,
 		token: state.token
 	}
 }

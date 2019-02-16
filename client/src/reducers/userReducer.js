@@ -9,7 +9,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case 'SET_TOKEN':
       return { 
-        token: action.token
+        token: action.token,
+        isLoggedIn: true
       }
     default: 
       return state
