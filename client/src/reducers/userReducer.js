@@ -2,13 +2,14 @@
 
 const initialState = {
   isLoggedIn: false,
-  token: null
+  token: null,
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case 'SET_TOKEN':
       return { 
+        ...state,
         token: action.token,
         isLoggedIn: true
       }
