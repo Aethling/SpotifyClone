@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { fetchRecentlyPlayed } from '../action/recentlyPlayed';
+import { fetchRecentlyPlayed } from '../actions/recentlyPlayed';
 import { connect } from 'react-redux';
 // import Spotify from 'spotify-web-api-js';
 
@@ -48,4 +48,4 @@ render() {
 	}
 }
 }
-export default connect(mapSateToProps)(RecentlyPlayedPage);
+export default connect()(RecentlyPlayedPage);

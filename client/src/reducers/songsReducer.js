@@ -27,5 +27,3 @@ export const songsReducer = (state = defaultState, action) => {
 	}
 
 }
-
-export default songsReducer;
