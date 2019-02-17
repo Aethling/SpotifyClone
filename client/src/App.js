@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Dashboard from './components/Dashboard';
 import { setToken } from './actions/tokenActions';
+import { fetchUser } from './actions/user';
 
 //call gethashParams in constructor and sets the token
 //and the logged in
@@ -11,7 +12,7 @@ import { setToken } from './actions/tokenActions';
 
 class App extends Component {
 
-	componentDidMount() {
+	extractHashParams() {
 
 	    var hashParams = {};
 	    var e, r = /([^&;=]+)=?([^&;]*)/g,
@@ -23,6 +24,19 @@ class App extends Component {
 	    if (hashParams.access_token) {
 	    	this.props.dispatch(setToken(hashParams.access_token));
 	    } 
+	}
+	componentDidMount(){
+		if(!this.props.isLoggedIn){
+			this.extractHashParams();
+		}
+	}
+	componentDidUpdate(prevprops) {
+		if (!this.props.isLoggedIn) {
+			if(nextprops.token) {
+				this.props.dispatch(getUser(nextprops.token))
+			}
+			console.log("updated");
+		}
 	}
  
 	render() {
@@ -47,6 +61,7 @@ const mapStateToProps = state => {
 	return {
 		isLoggedIn: state.isLoggedIn,
 		token: state.token
+
 	}
 }
 export default connect(mapStateToProps)(App);

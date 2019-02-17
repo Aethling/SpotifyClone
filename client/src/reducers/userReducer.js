@@ -3,6 +3,9 @@
 const initialState = {
   isLoggedIn: false,
   token: null,
+  user: null,
+  isTokenSuccess: false,
+  error: null
 }
 
 export default (state = initialState, action) => {
@@ -13,7 +16,22 @@ export default (state = initialState, action) => {
         token: action.token,
         isLoggedIn: true
       }
+    case 'FETCH_USER_SUCCESS':
+      return {
+        ...state,
+        user: action.user
+      }
+    case 'FETCH_USER_REQUESTED':
+      return {
+        ...state,
+        isTokenSuccess: false
+      }
+    case 'FETCH_USER_ERROR':
+      return {
+        ...state,
+        error: action.err
+      }
     default: 
       return state
   }
-};
+}
