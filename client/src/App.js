@@ -12,6 +12,8 @@ import { fetchUser } from './actions/user';
 
 class App extends Component {
 
+	state = {}
+
 	extractHashParams() {
 
 	    var hashParams = {};
@@ -30,11 +32,13 @@ class App extends Component {
 			this.extractHashParams();
 		}
 	}
-	componentDidUpdate(prevprops) {
-		if (!this.props.isLoggedIn) {
-			if(nextprops.token) {
-				this.props.dispatch(getUser(nextprops.token))
-			}
+	static getDerivedStateFromProps(nextProps, prevState) {
+			console.log(nextProps);
+		if (nextProps.isLoggedIn !== prevState.isLoggedIn) {
+
+			// if (nextprops.token) {
+			// 	// this.props.dispatch(getUser(nextprops.token))
+			// }
 			console.log("updated");
 		}
 	}
