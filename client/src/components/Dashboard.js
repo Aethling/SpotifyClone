@@ -17,23 +17,23 @@ class Dashboard extends Component {
 			nowPlaying: null
 		}
 
-	componentDidMount() {
+	// componentDidMount() {
 
-		fetch('https://api.spotify.com/v1/me', {
-			headers: {'Authorization': 'Bearer ' + this.props.token}
-		})
-			.then(checkStatus)
-			.then(blob => blob.json())
-			.then(data => this.setState({myData: data, isLoading: false}))
+	// 	fetch('https://api.spotify.com/v1/me', {
+	// 		headers: {'Authorization': 'Bearer ' + this.props.token}
+	// 	})
+	// 		.then(checkStatus)
+	// 		.then(blob => blob.json())
+	// 		.then(data => this.setState({myData: data, isLoading: false}))
 
-		function checkStatus(response) {
-			if (response.ok) {
-				return Promise.resolve(response);
-			} else {
-				return Promise.reject(new Error(response.statusText));
-			}
-		}
-	}
+	// 	function checkStatus(response) {
+	// 		if (response.ok) {
+	// 			return Promise.resolve(response);
+	// 		} else {
+	// 			return Promise.reject(new Error(response.statusText));
+	// 		}
+	// 	}
+	// }
 	// getNowPlaying = (props) => {
 	// 	if (props.token) {
 	// 			spotifyWebApi.setAccessToken(props.token);
