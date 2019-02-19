@@ -11,41 +11,40 @@ class RecentlyPlayedPage extends Component {
 
 	componentDidMount() {
 		this.props.dispatch(fetchRecentlyPlayed(this.props.token))
-			// fetch('https://api.spotify.com/v1/me/player/recently-played', {
-			// 		headers: {'Authorization': 'Bearer ' + this.props.token}
-			// 	})
-			// 		.then(checkStatus)
-			// 		.then(blob => blob.json())
-			// 		.then(data => this.setState({myData: data, isLoading: false}))
-
-			// 	function checkStatus(response) {
-			// 		if (response.ok) {
-			// 			return Promise.resolve(response);
-			// 		} else {
-			// 			return Promise.reject(new Error(response.statusText));
-			// 		}
-			// }
 		}
 
 	 
 render() {
-	if (this.state.isLoading) {
+	if (this.props.fetchSongsPending) {
+		return (
+			<div>
+				<ul>
+					{this.props.recentSongs.map((item, index) => {
+						return (
+							<li>
+								{item.track.artists[0].name}
+							</li>
+						)
+					})
+					}
+				</ul>
+
+			</div>
+		)
+	} else {
 		return (
 			<div>
 				<p>Loading</p>
 			</div>
 		)
-	} else {
-		console.log(this.state);
-		return (
-			<div>
-	    	{this.state.myData ?
-		   <p>hi</p>
-	    		: <h2>Still Loading</h2>  }
-
-			</div>
-		)
+}
+}
+}
+const mapStateToProps = state => {
+	return {
+		token: state.userReducer.token,
+		recentSongs: state.songsReducer.recentSongs.items,
+		fetchSongsPending: state.songsReducer.fetchSongsPending
 	}
 }
-}
-export default connect()(RecentlyPlayedPage);
+export default connect(mapStateToProps)(RecentlyPlayedPage);

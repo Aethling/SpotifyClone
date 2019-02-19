@@ -1,5 +1,6 @@
 const defaultState = {
 	fetchSongsPending: true,
+	recentSongs: null
 }
 
 export const songsReducer = (state = defaultState, action) => {
@@ -9,10 +10,10 @@ export const songsReducer = (state = defaultState, action) => {
       ...state,
       fetchSongsPending: true
     };
-		case "Fetch_RECENTLY_PLAYED_SUCCESS":
+		case "FETCH_RECENTLY_PLAYED_SUCCESS":
 			return {
 				...state,
-				songs: action.songs,
+				recentSongs: action.recentSongs,
 				fetchSongsError: false,
 				fetchSongsPending: false
 			};

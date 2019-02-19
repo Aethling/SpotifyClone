@@ -1,15 +1,4 @@
 
-export const fetchRecentlyPlayed = token => {
-	return dispatch => {
-		dispatch(fetchRecentlyPlayedRequest());
-		return fetch('https://api.spotify.com/v1/me/player/recently-played', {
-					headers: {'Authorization': 'Bearer ' + token}
-				})
-					.then(blob => blob.json())
-					.then(res => dispatch(fetchRecentlyPlayedSuccess(res)))
-					.then(err => dispatch(fetchRecentlyPlayedError(err)));
-	}
-}
 export function fetchRecentlyPlayedSuccess(recentSongs) {
 	return {
 		type: 'FETCH_RECENTLY_PLAYED_SUCCESS',
@@ -26,5 +15,16 @@ export function fetchRecentlyPlayedError(err) {
 export function fetchRecentlyPlayedRequest() {
 	return {
 		type: 'FETCH_RECENTLY_PLAYED_REQUEST'
+	}
+}
+export const fetchRecentlyPlayed = token => {
+	return dispatch => {
+		dispatch(fetchRecentlyPlayedRequest());
+		return fetch('https://api.spotify.com/v1/me/player/recently-played', {
+					headers: {'Authorization': 'Bearer ' + token}
+				})
+					.then(blob => blob.json())
+					.then(res => dispatch(fetchRecentlyPlayedSuccess(res)))
+					.catch(err => dispatch(fetchRecentlyPlayedError(err)));
 	}
 }

@@ -6,34 +6,13 @@ import HomePage from '../pages/HomePage';
 import RecentlyPlayedPage from '../pages/RecentlyPlayedPage';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import NotFoundPage from '../pages/NotFoundPage';
+import { connect } from 'react-redux';
 // import Spotify from 'spotify-web-api-js';
 
 // const spotifyWebApi = new Spotify();
 
 class Dashboard extends Component {
-	state = {
-			myData: null,
-			isLoading: true,
-			nowPlaying: null
-		}
 
-	// componentDidMount() {
-
-	// 	fetch('https://api.spotify.com/v1/me', {
-	// 		headers: {'Authorization': 'Bearer ' + this.props.token}
-	// 	})
-	// 		.then(checkStatus)
-	// 		.then(blob => blob.json())
-	// 		.then(data => this.setState({myData: data, isLoading: false}))
-
-	// 	function checkStatus(response) {
-	// 		if (response.ok) {
-	// 			return Promise.resolve(response);
-	// 		} else {
-	// 			return Promise.reject(new Error(response.statusText));
-	// 		}
-	// 	}
-	// }
 	// getNowPlaying = (props) => {
 	// 	if (props.token) {
 	// 			spotifyWebApi.setAccessToken(props.token);
@@ -58,13 +37,13 @@ class Dashboard extends Component {
 	// )};
 	 
 render() {
-	if (this.state.isLoading) {
-		return (
-			<div>
-				<p>Page is loading</p>
-			</div>
-			);
-	} else { 
+	// if (this.props.isLoading) {
+	// 	return (
+	// 		<div>
+	// 			<p>Page is loading</p>
+	// 		</div>
+	// 		);
+	// } else { 
 		return (
 		  <div className='App'>
       	<BrowserRouter>
@@ -92,5 +71,9 @@ render() {
 		)
 	}
 }
+const mapStateToProps = state => {
+	return {
+		token: state.userReducer.token
+	}
 }
-export default Dashboard
+export default connect(mapStateToProps)(Dashboard);
