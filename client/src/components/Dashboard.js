@@ -7,6 +7,7 @@ import RecentlyPlayedPage from '../pages/RecentlyPlayedPage';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import NotFoundPage from '../pages/NotFoundPage';
 import { connect } from 'react-redux';
+import Header from './header/Header';
 // import Spotify from 'spotify-web-api-js';
 
 // const spotifyWebApi = new Spotify();
@@ -51,6 +52,9 @@ render() {
 						<div className="left-side-section">
 							 <SideMenu token={this.props.token}/>
 				    </div>
+				    <div className="header">
+				    	<Header user={this.props.user}/>
+				    </div>
 						<div className="main-section">
 						<div className="main-section-container">
 							<Switch>
@@ -61,7 +65,7 @@ render() {
 				        <Route path="/notfound" component={NotFoundPage} />
 							</Switch>
 
-							</div>
+						</div>
 						</div>
 					</div>	
 				</BrowserRouter>
@@ -73,7 +77,8 @@ render() {
 }
 const mapStateToProps = state => {
 	return {
-		token: state.userReducer.token
+		token: state.userReducer.token,
+		user: state.userReducer.user
 	}
 }
 export default connect(mapStateToProps)(Dashboard);
