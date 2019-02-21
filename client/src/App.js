@@ -31,13 +31,13 @@ class App extends Component {
 		}
 	}
 	componentDidUpdate(prevProps) {
-		if (prevProps.isUser !== this.props.isUser) {
+		if (prevProps !== this.props) {
 			this.props.dispatch(getUser(this.props.token))
 		}
 	}
  
 	render() {
-		if (this.props.isUser) {
+		if (this.props.isUserSuccess) {
 			return (
 				<Dashboard />
 			)
@@ -57,7 +57,7 @@ const mapStateToProps = state => {
 	return {
 		isLoggedIn: state.userReducer.isLoggedIn,
 		token: state.userReducer.token,
-		isUser: state.userReducer.user
+		isUserSuccess: state.userReducer.isUserSuccess
 
 	}
 }

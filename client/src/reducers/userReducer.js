@@ -5,6 +5,7 @@ const initialState = {
   token: null,
   user: null,
   isTokenSuccess: false,
+  isUserSuccess: false,
   error: null
 }
 
@@ -19,7 +20,8 @@ export default (state = initialState, action) => {
     case 'FETCH_USER_SUCCESS':
       return {
         ...state,
-        user: action.user
+        user: action.user,
+        isUserSuccess: true
       }
     case 'FETCH_USER_REQUESTED':
       return {
