@@ -1,18 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Header = ({user}) => {
+const Header = (props) => {
+			// <img src={this.props.userImg} alt="user pic"/>
 	return (
 		<div>
-			<img src={user.images[0].url} alt="user pic"/>
-			<h2>{user.display_name}</h2>
+			<h2>{props.user.country}</h2>
 		</div>
 	)
 }
 // const mapStateToProps = state => {
 // 	return {
-// 		userName: state.userReducer.user.display_name,
-// 		userImg: state.userReducer.user.images[0].url 
+// 		userName: state.userReducer.user.country,
+// 		isUser: state.userReducer.user
+// 		// userImg: state.userReducer.user.images[0].url 
 // 	}
 // }
 // export default connect(mapStateToProps)(Header);

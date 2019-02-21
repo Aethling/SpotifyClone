@@ -31,16 +31,15 @@ class App extends Component {
 		}
 	}
 	componentDidUpdate(prevProps) {
-		if (prevProps !== this.props) {
+		if (prevProps.isUser !== this.props.isUser) {
 			this.props.dispatch(getUser(this.props.token))
 		}
 	}
  
 	render() {
-		console.log(this.props);
-		if (this.props.isLoggedIn) {
+		if (this.props.isUser) {
 			return (
-				<Dashboard token={this.props.token}/>
+				<Dashboard />
 			)
 		} else {
 			return (
@@ -57,7 +56,8 @@ class App extends Component {
 const mapStateToProps = state => {
 	return {
 		isLoggedIn: state.userReducer.isLoggedIn,
-		token: state.userReducer.token
+		token: state.userReducer.token,
+		isUser: state.userReducer.user
 
 	}
 }

@@ -36,6 +36,7 @@ class Dashboard extends Component {
 	// 	return (
 	//   <Route render={props => (!user ? <Component {...props} /> : <Redirect to="/" />)} />
 	// )};
+
 	 
 render() {
 	// if (this.props.isLoading) {
@@ -45,12 +46,13 @@ render() {
 	// 		</div>
 	// 		);
 	// } else { 
+		console.log(this.props);
 		return (
 		  <div className='App'>
       	<BrowserRouter>
       		<div>
 						<div className="left-side-section">
-							 <SideMenu token={this.props.token}/>
+							 <SideMenu />
 				    </div>
 				    <div className="header">
 				    	<Header user={this.props.user}/>
