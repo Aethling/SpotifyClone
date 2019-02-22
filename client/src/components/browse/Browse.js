@@ -2,25 +2,29 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Browse = ({ token, browseCategories }) => {
-			// {browseCategories.map((category, index) => <img key={index} className="browseIcon" /> )}
-			if (browseCategories) {
+
+		const renderCategories = () => {
+			return browseCategories.items.map((item, i) => {
 				return (
-					<div>
-						<p>categories returned</p>
-					</div>
-					)
-			}
+					<img className="browseIcon" key={i} src={item.icons[0].url} />
+				)
+			})
+		};	
+			
 	return (
 		<div>
-			not returned
+			{
+				browseCategories && renderCategories()
+			}
 		</div>
-	)
-}
+	);
+};
 
 const mapStateToProps = state => {
 	return {
 		token: state.userReducer.token,
-		browseCategories: state.browseReducer.categories
+		browseCategories: state.browseReducer.browseCategories ? 
+			state.browseReducer.browseCategories.categories : ''
 	}
 }
 
