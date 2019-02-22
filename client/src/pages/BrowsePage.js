@@ -1,32 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchBrowse } from '../actions/browseActions';
+import Browse from '../components/browse/Browse';
 
 class BrowsePage extends Component {
-	state = {
-		browseData: null,
-		isLoading: true
-	}
 
 	componentDidMount() {
-
-		fetch('https://api.spotify.com/v1/browse/categories', {
-				headers: {'Authorization': 'Bearer ' + this.props.token}
-		})
-			.then(checkStatus)
-			.then(blob => blob.json())
-			.then(data => this.setState({browseData: data.categories.items, isLoading: false}))
-		
-		function checkStatus(response) {
-			if (response.ok) {
-				return Promise.resolve(response);
-			} else {
-				return Promise.reject(new Error(response.statusText));
-			}
-		}
+		this.props.dispatch(fetchBrowse(this.props.token));
 	}
 
 	 
 render() {
-	if (this.state.isLoading) {
+	if (this.props.browsePending) {
 		return (
 			<div>
 				<p>Loading</p>
@@ -35,10 +20,18 @@ render() {
 	} else {
 		return (
 			<div className="browseContainer">
-				{this.state.browseData.map((category, index) => <img key={index} className="browseIcon" src={category.icons[0].url}/> )}
+				<Browse />
 			</div>
 		)
 	}
 }
 }
-export default BrowsePage;
+
+const mapStateToProps = state => {
+	return {
+		browsePending: state.browseReducer.browsePending,
+		token: state.userReducer.token
+	}
+}
+
+export default connect(mapStateToProps)(BrowsePage)
