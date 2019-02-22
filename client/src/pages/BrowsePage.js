@@ -8,22 +8,16 @@ class BrowsePage extends Component {
 	componentDidMount() {
 		this.props.dispatch(fetchBrowse(this.props.token));
 	}
-
 	 
 render() {
-	if (this.props.browsePending) {
-		return (
-			<div>
-				<p>Loading</p>
-			</div>
-		)
-	} else {
-		return (
-			<div className="browseContainer">
-				<Browse />
-			</div>
-		)
-	}
+	return (
+		<div>
+			{!this.props.browsePending &&
+					<div className="browseContainer">
+						<Browse />
+					</div>}
+		</div>
+	)
 }
 }
 
