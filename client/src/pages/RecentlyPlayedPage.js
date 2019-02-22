@@ -11,33 +11,28 @@ class RecentlyPlayedPage extends Component {
 	componentDidMount() {
 		this.props.dispatch(fetchRecentlyPlayed(this.props.token))
 	}
-	 
-	render() {
-		if (this.props.fetchSongsPending) {
-				return (
-				<div>
-					<p>Loading</p>
-				</div>
-			)
-		} else {
-			return (
-				<div>
-					<ul>
-						{this.props.recentSongs.items.map((item, index) => {
+	renderSongs() {
+		return this.props.recentSongs.items.map((item, index) => {
 							return (
-								<li>
+								<li key={index}>
 									{item.track.artists[0].name}
 								</li>
 							)
 						})
-						}
-					</ul>
-				</div>
-			)
-	}
-	}
-	}	
+	}	 	
+	render() {
+		return (
+			<div>
+				<ul>
+				{
+					!this.props.fetchSongsPending && this.renderSongs()
+				}
+				</ul>
+			</div>
+		)
 		
+	}
+}	
 
 	const mapStateToProps = state => {
 		return {

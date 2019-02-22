@@ -8,29 +8,19 @@ import { fetchUser } from '../actions/user';
 
 class HomePage extends Component {
 
-
-	 
 render() {
-	if (!this.props.isLoggedIn) {
-		return (
-			<div>
-				<p>Loading</p>
-			</div>
-		)
-	} else {
-		return (
-			<div>
-	    	{this.props.user ?
-		    	<div> 
-		    		<h1>{this.props.user.display_name}</h1>
-		    		<h3>Followers: {this.props.user.followers.total}</h3>
-		    		<img src={this.props.user.images[0].url}/> 
-	    		</div>
-	    		: <h2>Still Loading</h2>  }
-
-			</div>
-		)
-	}
+	return (
+		<div>
+			{
+			this.props.isLoggedIn && this.props.user &&
+						<div> 
+			    		<h1>{this.props.user.display_name}</h1>
+			    		<h3>Followers: {this.props.user.followers.total}</h3>
+			    		<img src={this.props.user.images[0].url}/> 
+		    		</div>
+			}
+		</div>
+	)
 }
 }
 const mapStateToProps = state => {
