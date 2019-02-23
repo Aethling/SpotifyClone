@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchBrowse } from '../actions/browseActions';
 import Browse from '../components/browse/Browse';
+import { changeTitle } from '../actions/titleActions';
 
 class BrowsePage extends Component {
 
 	componentDidMount() {
 		this.props.dispatch(fetchBrowse(this.props.token));
+		this.props.dispatch(changeTitle('Browse Categories'))
 	}
 	 
 render() {

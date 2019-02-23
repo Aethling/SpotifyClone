@@ -8,9 +8,8 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import NotFoundPage from '../pages/NotFoundPage';
 import { connect } from 'react-redux';
 import Header from './header/Header';
-// import Spotify from 'spotify-web-api-js';
+import MainHeader from './mainHeader/mainHeader';
 
-// const spotifyWebApi = new Spotify();
 
 class Dashboard extends Component {
 
@@ -39,14 +38,6 @@ class Dashboard extends Component {
 
 	 
 render() {
-	// if (this.props.isLoading) {
-	// 	return (
-	// 		<div>
-	// 			<p>Page is loading</p>
-	// 		</div>
-	// 		);
-	// } else { 
-		console.log(this.props);
 		return (
 		  <div className='App'>
       	<BrowserRouter>
@@ -56,6 +47,9 @@ render() {
 				    </div>
 				    <div className="header">
 				    	<Header user={this.props.user}/>
+				    </div>
+				    <div className="mainHeader">
+				    	<MainHeader />
 				    </div>
 						<div className="main-section">
 						<div className="main-section-container">

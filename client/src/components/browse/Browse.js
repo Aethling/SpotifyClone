@@ -6,7 +6,11 @@ const Browse = ({ token, browseCategories }) => {
 		const renderCategories = () => {
 			return browseCategories.items.map((item, i) => {
 				return (
-					<img className="browseIcon" key={i} src={item.icons[0].url} />
+					<div className="parent" key={i}>
+						<div className="child">
+							<div className="browseIcon" style={{backgroundImage: `url(${item.icons[0].url})`}}/>
+						</div>
+					</div>
 				)
 			})
 		};	

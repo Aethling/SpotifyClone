@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { fetchRecentlyPlayed } from '../actions/recentlyPlayed';
 import { connect } from 'react-redux';
-// import Spotify from 'spotify-web-api-js';
-
-// const spotifyWebApi = new Spotify();
+import { changeTitle } from '../actions/titleActions';
 
 
 class RecentlyPlayedPage extends Component {
 
 	componentDidMount() {
 		this.props.dispatch(fetchRecentlyPlayed(this.props.token))
+		this.props.dispatch(changeTitle('Recently Played'))
 	}
+
 	renderSongs() {
 		return this.props.recentSongs.items.map((item, index) => {
 							return (

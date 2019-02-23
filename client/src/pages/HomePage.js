@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUser } from '../actions/user';
-// import Spotify from 'spotify-web-api-js';
-
-// const spotifyWebApi = new Spotify();
+import { changeTitle } from '../actions/titleActions';
 
 
 class HomePage extends Component {
-
+	componentDidMount() {
+		this.props.dispatch(changeTitle('Home Page'));
+	}
 render() {
 	return (
 		<div>
