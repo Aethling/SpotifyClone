@@ -1,13 +1,20 @@
 import React from 'react';
+import { changeTitle } from '../actions/titleActions';
+import { connect } from 'react-redux';
 
-const ArtistsPage = () => {
+
+const ArtistsPage = ({ dispatch }) => {
+	const title = () => {
+		dispatch(changeTitle('Artists'))
+	}
 	return (
 		<div>
-			<h3>
-				These are the artists
-			</h3>
+			<h1>
+				These are your saved artists
+				{title()}
+			</h1>
 		</div>
 	)
 }
 
-export default ArtistsPage;
+export default connect()(ArtistsPage)

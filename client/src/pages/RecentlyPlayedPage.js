@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { fetchRecentlyPlayed } from '../actions/recentlyPlayed';
 import { connect } from 'react-redux';
 import { changeTitle } from '../actions/titleActions';
-import songList from '../components/songList/SongList';
+import SongList from '../components/songList/SongList';
 
 class RecentlyPlayedPage extends Component {
 
@@ -11,23 +11,13 @@ class RecentlyPlayedPage extends Component {
 		this.props.dispatch(changeTitle('Recently Played'))
 	}
 
-	renderSongs() {
-		return this.props.recentSongs.items.map((item, index) => {
-							return (
-								<li key={index}>
-									{item.track.artists[0].name}
-								</li>
-							)
-						})
-	}	 	
+ 	
 	render() {
 		return (
 			<div>
-				<ul>
 				{
 					!this.props.fetchSongsPending && <SongList />
 				}
-				</ul>
 			</div>
 		)
 		
