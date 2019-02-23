@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { fetchRecentlyPlayed } from '../actions/recentlyPlayed';
 import { connect } from 'react-redux';
 import { changeTitle } from '../actions/titleActions';
-
+import songList from '../components/songList/SongList';
 
 class RecentlyPlayedPage extends Component {
 
@@ -25,7 +25,7 @@ class RecentlyPlayedPage extends Component {
 			<div>
 				<ul>
 				{
-					!this.props.fetchSongsPending && this.renderSongs()
+					!this.props.fetchSongsPending && <SongList />
 				}
 				</ul>
 			</div>
