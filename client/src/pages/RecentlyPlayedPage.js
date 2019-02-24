@@ -3,6 +3,7 @@ import { fetchRecentlyPlayed } from '../actions/recentlyPlayed';
 import { connect } from 'react-redux';
 import { changeTitle } from '../actions/titleActions';
 import SongList from '../components/songList/SongList';
+import Sound from 'react-sound';
 
 class RecentlyPlayedPage extends Component {
 
@@ -17,7 +18,15 @@ class RecentlyPlayedPage extends Component {
 			<div>
 				{
 					!this.props.fetchSongsPending && <SongList />
+				} 
+				{
+					!this.props.fetchSongsPending &&
+				<Sound url={this.props.recentSongs.items[0].track.preview_url}
+							playStatus={Sound.status.PLAYING}
+							playFromPosition={300}
+				/>
 				}
+
 			</div>
 		)
 		
