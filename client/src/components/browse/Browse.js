@@ -9,6 +9,7 @@ const Browse = ({ token, browseCategories }) => {
 					<div className="parent" key={i}>
 						<div className="child">
 							<div className="browseIcon" style={{backgroundImage: `url(${item.icons[0].url})`}}/>
+							<div className="browseIconName"> {item.name}</div>
 						</div>
 					</div>
 				)

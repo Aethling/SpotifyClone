@@ -9,32 +9,11 @@ import NotFoundPage from '../pages/NotFoundPage';
 import { connect } from 'react-redux';
 import Header from './header/Header';
 import MainHeader from './mainHeader/mainHeader';
+import Footer from './footer/Footer';
 
 
 class Dashboard extends Component {
 
-	// getNowPlaying = (props) => {
-	// 	if (props.token) {
-	// 			spotifyWebApi.setAccessToken(props.token);
-	// 	}
-	// 	console.log(spotifyWebApi.setAccessToken);
- //  	spotifyWebApi.getMyCurrentPlaybackState()
- //  		.then((response) => {
- //  			//console.log the response to see all useful info to use;
- //  			console.log(response);
- //  			this.setState({
- //  				nowPlaying: {
- //  					name: response.item.name,
- //  					image: response.item.album.images[0].url 
- //  				}
- //  			})
- //  		})
- //  }
-
-	// const PrivateRoute = ({ component: Component, user }) => {
-	// 	return (
-	//   <Route render={props => (!user ? <Component {...props} /> : <Redirect to="/" />)} />
-	// )};
 
 	 
 render() {
@@ -60,9 +39,9 @@ render() {
 								<Route path="/artists" component={ArtistsPage} />
 				        <Route path="/notfound" component={NotFoundPage} />
 							</Switch>
-
 						</div>
 						</div>
+						<Footer />
 					</div>	
 				</BrowserRouter>
 

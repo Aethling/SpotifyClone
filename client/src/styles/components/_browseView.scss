@@ -1,7 +1,7 @@
 .browseIcon {
   height: 150px;
   width: 150px;
-  margin: 10px;
+  background-size: contain;
 }
 .browseContainer {
 	
@@ -12,6 +12,7 @@
   width: 150px;
   overflow: hidden;
   cursor: pointer;
+  margin: 10px;
 
 }
 .child {
@@ -22,18 +23,25 @@
   background-size: cover;
   background-repeat: no-repeat;
   transition: all .5s;
+  text-align: center;
   &:before {
-  	content: "";
-	  display: none;
-	  height: 100%;
-	  width: 100%;
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  background-color: rgba(52, 73, 94, 0.75)
-  }	
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(52, 73, 94, 0.75)
+  } 
 }
 
+.browseIconName {
+  position: relative;
+  top: -39px;
+  font-size: 13px;
+  font-family: sans-serif;
+}
 // .child:before {
 //   content: "";
 //   display: none;
@@ -53,7 +61,7 @@
     display: block;
 }
 // .child {
-// 	img {
+//  img {
 //   // display: none;
 //   font-size: 22px;
 //   font-family: sans-serif;
@@ -64,10 +72,12 @@
 //   height: 51px;
 //   cursor: pointer;
 //   text-decoration: none;
-// 	}
+//  }
 // }
 
 .parent:hover img, .parent:focus img {
     display: block;
     color: white;
 }
+
+
