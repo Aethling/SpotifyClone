@@ -8,7 +8,7 @@ const SongList = ({ songs, onItemClick }) => {
 		return songs.items.map((item, index) => {
 							return (
 								<li className="songList-item-container" key={index}>
-									<div onClick={() => onItemClick(item.track.preview_url)}>
+									<div className="buttons-container" onClick={() => onItemClick(item.track.preview_url)}>
 										<PlayButton/>
 									</div>
 									<p className="songList-item">

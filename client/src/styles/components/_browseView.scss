@@ -7,12 +7,12 @@
 	
 }
 .parent {
-	display: inline-block;
+  display: inline-block;
   height: 150px;
   width: 150px;
   overflow: hidden;
   cursor: pointer;
-  margin: 10px;
+  margin: 4px;
 
 }
 .child {
@@ -79,5 +79,6 @@
     display: block;
     color: white;
 }
+
 
 

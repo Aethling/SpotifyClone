@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
 import { fetchRecentlyPlayed } from '../actions/recentlyPlayed';
 import { changeTitle } from '../actions/titleActions';
 import { setNowPlaying } from '../actions/songActions';
@@ -49,6 +50,6 @@ class RecentlyPlayedPage extends Component {
 			fetchSongsPending: state.songsReducer.fetchSongsPending,
 			nowPlaying: state.songsReducer.nowPlaying,
 			isPlaying: state.songsReducer.isPlaying
-		}
-	}
+		};
+	};
 export default connect(mapStateToProps)(RecentlyPlayedPage);
