@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SideMenu from './sidemenu/SideMenu';
 import BrowsePage from '../pages/BrowsePage';
 import ArtistsPage from '../pages/ArtistsPage';
+import AlbumsPage from '../pages/AlbumsPage';
 import HomePage from '../pages/HomePage';
 import RecentlyPlayedPage from '../pages/RecentlyPlayedPage';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
@@ -10,6 +11,7 @@ import { connect } from 'react-redux';
 import Header from './header/Header';
 import MainHeader from './mainHeader/mainHeader';
 import Footer from './footer/Footer';
+
 
 
 class Dashboard extends Component {
@@ -37,6 +39,7 @@ render() {
 								<Route path="/browse" render={ () => <BrowsePage token={this.props.token}/> }/>
 								<Route path="/recent" render={ () => <RecentlyPlayedPage token={this.props.token}/> }/>
 								<Route path="/artists" component={ArtistsPage} />
+								<Route path="/albums" component={AlbumsPage} />
 				        <Route path="/notfound" component={NotFoundPage} />
 							</Switch>
 						</div>

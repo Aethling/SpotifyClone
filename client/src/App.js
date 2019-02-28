@@ -23,7 +23,13 @@ class App extends Component {
 	    // return hashParams;
 	    if (hashParams.access_token) {
 	    	this.props.dispatch(setToken(hashParams.access_token));
-	    } 
+	    	localStorage.setItem('token', hashParams.access_token);
+	    } else {
+	    	let localToken = localStorage.getItem('token')
+	    	if (localToken) {
+	    	this.props.dispatch(setToken(localToken));
+		    }
+		  }
 	}
 	componentDidMount(){
 		if(!this.props.isLoggedIn){

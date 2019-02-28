@@ -5,6 +5,7 @@ import Dashboard from '../components/Dashboard';
 import NotFoundPage from '../pages/NotFoundPage';
 import Login from '../App';
 import ArtistsPage from '../pages/ArtistsPage';
+import AlbumsPage from '../pages/AlbumsPage';
 import HomePage from '../pages/HomePage';
 import SideMenu from '../components/sidemenu/SideMenu';
 // import PrivateRoute from '../config/utils';
@@ -27,6 +28,7 @@ const AppRouter = (props) => (
 				<Route path="/" component={Home} exact={true} />
 				<PrivateRoute path="/browse" component={BrowsePage} />
 				<PrivateRoute path="/artists" component={ArtistsPage} />
+				<PrivateRoute path="/albums" component={AlbumsPage} />
         <PrivateRoute path="/notfound" component={NotFoundPage} />
 			</Switch>
 			

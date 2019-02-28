@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PlayButton from '../icons/PlayIconSVG';
+import PauseButton from '../icons/PauseIconSVG';
 
-const SongList = ({ songs, onItemClick }) => {
+const SongList = ({ songs, onItemClick, isPlaying }) => {
 
 	const renderSongs = () => {
 		return songs.items.map((item, index) => {
@@ -41,7 +42,8 @@ const SongList = ({ songs, onItemClick }) => {
 } 	
 const mapStateToProps = state => {
 	return {
-		songs: state.songsReducer.recentSongs
+		songs: state.songsReducer.recentSongs,
+		isPlaying: state.songsReducer.isPlaying
 	}
 }
 

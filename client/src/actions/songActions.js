@@ -1,4 +1,4 @@
-export function setNowPlaying(url) {
+export function setSongUrl(url) {
 	return {
 		type: 'SET_SONG_URL',
 		url
