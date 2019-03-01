@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { changeTitle } from '../actions/titleActions';
 import { connect } from 'react-redux';
 
+class ArtistsPage extends Component {
 
-const ArtistsPage = ({ dispatch }) => {
-	const title = () => {
-		dispatch(changeTitle('Artists'))
+	componentDidMount() {
+		this.props.dispatch(changeTitle('Artists'))
 	}
-	return (
-		<div>
-			<h1>
-				These are your saved artists
-				{title()}
-			</h1>
-		</div>
-	)
+	render() {
+		return (
+			<div>
+				<h1>
+					These are your saved artists
+				</h1>
+			</div>
+		)
+	}
 }
-
-export default connect()(ArtistsPage)
+const mapStateToProps = state => {
+		return {
+			title: state.titleReducer.title
+		};
+	};
+export default connect(mapStateToProps)(ArtistsPage)

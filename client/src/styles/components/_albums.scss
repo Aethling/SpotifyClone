@@ -1,0 +1,23 @@
+
+.album-images {
+	height: 200px;
+	border-radius: 50%;
+}
+.album-list {
+	display: inline-block;
+	margin: 16px;
+	text-align: center;
+	width: 200px;
+	vertical-align: top;
+	&:hover {
+		cursor: pointer;
+	}
+}
+.album-name {
+	font-size: 14px;
+	margin: 12px;
+}
+.album-artist-name {
+	font-size: 14px;
+	color: $headerColor;
+}

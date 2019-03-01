@@ -1,7 +1,7 @@
-export function setSongUrl(url) {
+export function setNowPlaying(track) {
 	return {
-		type: 'SET_SONG_URL',
-		url
+		type: 'SET_NOW_PLAYING',
+		track
 	}
 }
 export function toggleIsPlaying(boolean) {

@@ -14,5 +14,15 @@
  .playButton {
 	position: relative;
 	top: 50%; 
-	// transform: translateY(-50%);
+}
+.footer-displaySongInfo-container {
+  position: relative;
+  top: -68px;
+  width: 175px;
+  padding: 25px;
+  font-size: 16px;
+}
+.footer-artist-name {
+  color: $headerColor;
+  font-size: 14px;
 }

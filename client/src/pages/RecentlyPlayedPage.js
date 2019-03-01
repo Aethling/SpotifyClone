@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
 import { fetchRecentlyPlayed } from '../actions/recentlyPlayed';
 import { changeTitle } from '../actions/titleActions';
-import { setSongUrl } from '../actions/songActions';
+import { setNowPlaying } from '../actions/songActions';
 import { toggleIsPlaying } from '../actions/songActions';
 import SongList from '../components/songList/SongList';
 import Sound from 'react-sound';
@@ -18,7 +18,7 @@ class RecentlyPlayedPage extends Component {
 
 	onItemClick = trackUrl => {
 		// !this.props.nowPlaying && this.props.dispatch(setNowPlaying(trackUrl));
-		this.props.dispatch(setSongUrl(trackUrl));
+		this.props.dispatch(setNowPlaying(trackUrl));
 		this.props.isPlaying ? this.props.dispatch(toggleIsPlaying(false)) : 
 			this.props.dispatch(toggleIsPlaying(true))
 
@@ -45,7 +45,7 @@ class RecentlyPlayedPage extends Component {
 			token: state.userReducer.token,
 			recentSongs: state.songsReducer.recentSongs,
 			fetchSongsPending: state.songsReducer.fetchSongsPending,
-			nowPlayingUrl: state.songsReducer.nowPlayingUrl,
+			nowPlaying: state.songsReducer.nowPlaying,
 			isPlaying: state.songsReducer.isPlaying
 		};
 	};

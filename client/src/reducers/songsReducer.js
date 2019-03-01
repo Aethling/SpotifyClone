@@ -3,7 +3,7 @@ const defaultState = {
 	recentSongs: null,
 	songId: null,
 	isPlaying: false,
-	nowPlayingUrl: null
+	nowPlaying: null
 }
 
 export const songsReducer = (state = defaultState, action) => {
@@ -26,10 +26,10 @@ export const songsReducer = (state = defaultState, action) => {
 				fetchSongsError: true,
 				fetchSongsPending: false
 			};
-		case "SET_SONG_URL":
+		case "SET_NOW_PLAYING":
 			return {
 				...state,
-				nowPlayingUrl: action.url
+				nowPlaying: action.track
 			}
 		case "TOGGLE_ISPLAYING":
 			return {
