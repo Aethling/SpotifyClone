@@ -13,12 +13,17 @@ class AlbumsPage extends Component {
 		this.props.dispatch(changeTitle('Albums'))
 		this.props.dispatch(fetchAlbums(this.props.token))
 	}
+	//make a back button that can dispatch this action
+		// this.props.dispatch(selectAlbum(false));
 
 	selectedAlbum = null;
 
 	handleAlbumClick = (index) => {
 		this.selectedAlbum = this.props.albums.items[index]
 		this.props.dispatch(selectAlbum(true))
+	}
+	componentWillUnmount() {
+		this.props.dispatch(selectAlbum(false))
 	}
 	render() {
 		return (
