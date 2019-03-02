@@ -1,4 +1,8 @@
-const albumsReducer = (state = {}, action) => {
+const defaultState = {
+	isAlbumSelected: false
+}
+
+const albumsReducer = (state = defaultState, action) => {
 	switch (action.type) {
 		case ("FETCH_ALBUMS_REQUEST"):
 			return {
@@ -17,6 +21,11 @@ const albumsReducer = (state = {}, action) => {
 				...state,
 				albumsPending: false,
 				albumsError: action.error
+			}
+		case ('SELECT_ALBUM'):
+			return {
+				...state,
+				isAlbumSelected: action.boolean
 			}
 		default:
 			return state;

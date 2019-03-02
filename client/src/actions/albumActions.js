@@ -15,6 +15,12 @@ export const fetchAlbumsRequestError = (error) => {
 		error
 	}
 }
+export const selectAlbum = (boolean) => {
+	return {
+		type: 'SELECT_ALBUM',
+		boolean
+	}
+}
 export const fetchAlbums = (token) => {
 	return dispatch => {
 		dispatch(fetchAlbumsRequest())

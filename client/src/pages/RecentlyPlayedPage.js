@@ -28,7 +28,8 @@ class RecentlyPlayedPage extends Component {
 		return (
 			<div>
 				{
-					!this.props.fetchSongsPending && <SongList onItemClick={this.onItemClick}/>
+					!this.props.fetchSongsPending && <SongList onItemClick={this.onItemClick}
+																										songs={this.props.recentSongs}/>
 				} 
 				{
 					!this.props.fetchSongsPending && <SongPlayer />

@@ -42,7 +42,6 @@ const SongList = ({ songs, onItemClick, isPlaying }) => {
 } 	
 const mapStateToProps = state => {
 	return {
-		songs: state.songsReducer.recentSongs,
 		isPlaying: state.songsReducer.isPlaying
 	}
 }
