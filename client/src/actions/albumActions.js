@@ -15,9 +15,9 @@ export const fetchAlbumsRequestError = (error) => {
 		error
 	}
 }
-export const selectAlbum = (boolean) => {
+export const isSelectAlbum = (boolean) => {
 	return {
-		type: 'SELECT_ALBUM',
+		type: 'IS_SELECT_ALBUM',
 		boolean
 	}
 }

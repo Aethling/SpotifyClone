@@ -22,7 +22,7 @@ const albumsReducer = (state = defaultState, action) => {
 				albumsPending: false,
 				albumsError: action.error
 			}
-		case ('SELECT_ALBUM'):
+		case ('IS_SELECT_ALBUM'):
 			return {
 				...state,
 				isAlbumSelected: action.boolean
