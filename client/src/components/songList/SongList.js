@@ -10,7 +10,14 @@ const SongList = ({ songs, onItemClick, isPlaying }) => {
 							return (
 								<li className="songList-item-container" key={index}>
 									<div className="buttons-container" onClick={() => onItemClick(item.track)}>
-										<PlayButton/>
+										{!isPlaying ?
+											<span className="play-icon">
+												<i className="far fa-play-circle"></i>
+											</span> : 
+											<span className="play-icon">
+												<i className="far fa-pause-circle"></i>
+											</span>
+								}
 									</div>
 									<p className="songList-item">
 										{item.track.name}
@@ -31,6 +38,7 @@ const SongList = ({ songs, onItemClick, isPlaying }) => {
 	return (
 		<div className="songList-container">
 				<div className="song-header-container">
+					<div className="buttons-container"></div>
 					<div className="song-header-item">Title</div>
 					<div className="song-header-item">Artist</div>
 					<div className="song-header-item">Album</div>

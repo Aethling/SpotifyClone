@@ -11,13 +11,20 @@ const Footer = ({ dispatch, isPlaying, nowPlaying }) => {
   return (
     <div className="footer-container">
     	<div className="footer-play-button-container" onClick={mainTogglePlay}>
-	    	<PlayButton />
+	    	{!isPlaying ?
+						<span className="footer-play-button">
+							<i className="far fa-play-circle"></i>
+						</span> : 
+						<span className="footer-play-button">
+							<i className="far fa-pause-circle"></i>
+							</span>
+				}
     	</div>
     	<div className="footer-displaySongInfo-container">
     		{
 	    		nowPlaying &&
 	    			<div>
-		    			<p>{nowPlaying.name}</p>
+		    			<p className="footer-song-name">{nowPlaying.name}</p>
 			    		<p className="footer-artist-name">{nowPlaying.artists[0].name}</p>
 		    		</div>
 	    	}
