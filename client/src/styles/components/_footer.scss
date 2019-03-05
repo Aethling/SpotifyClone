@@ -16,6 +16,7 @@
 	top: 50%; 
   font-size: 40px;
   color: #ccc;
+  -webkit-text-stroke: 2px #181818;
 }
 .footer-displaySongInfo-container {
   position: relative;
@@ -29,4 +30,8 @@
   font-size: 14px;
 }
 .footer-song-name {
+  margin-bottom: 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

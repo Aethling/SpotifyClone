@@ -3,16 +3,7 @@ import { Link }from 'react-router-dom';
 
 class SideMenu extends Component {
 	
-	handleBrowseClick() {
-		fetch('https://api.spotify.com/v1/browse/categories', {
-					headers: {'Authorization': 'Bearer ' + this.props.token}
-				}).then(blob => blob.json())
-					.then(data => console.log(data))
-					.catch(err => console.log(err))
-	}
 
-	
-	
 	render () {
 		return (
 			<ul className='side-menu-container'>

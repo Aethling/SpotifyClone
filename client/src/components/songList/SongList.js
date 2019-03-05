@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PlayButton from '../icons/PlayIconSVG';
 import PauseButton from '../icons/PauseIconSVG';
+import { msToTime } from '../../config/utils';
+
 
 const SongList = ({ songs, onItemClick, isPlaying }) => {
 
@@ -29,7 +31,7 @@ const SongList = ({ songs, onItemClick, isPlaying }) => {
 										{item.track.album.name}
 									</p>
 									<p className="songList-item">
-										{item.track.duration_ms}
+								{msToTime(item.track.duration_ms)}
 									</p>
 								</li>
 							)

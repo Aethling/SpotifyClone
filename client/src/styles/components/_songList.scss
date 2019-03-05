@@ -18,9 +18,10 @@
   color: #ccc;
 }
 .buttons-container {
-  width: 34px;
+  width: 35px;
   height: auto;
-  padding-left: 10px;
+  padding-left: 8px;
+
 }
 .songList-item-container {
   list-style-type: none;
@@ -36,8 +37,7 @@
 .songList-item-container span.play-icon {
   display: none;
   position: relative;
-  top: 18%;
-  transform: translateY(-50%);
+  top: 12%;
 }
 .songList-item-container:hover span.play-icon {
   display: inline;
@@ -46,10 +46,14 @@
 	padding: 0px 5px 0px 9px;
 	width: 250px;
   margin: 10px 0px 10px 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 span.play-icon {
-  font-size: 24px;
+  font-size: 28px;
   color: #ccc;
+  -webkit-text-stroke: 1px #181818;
 }
 

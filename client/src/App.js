@@ -28,6 +28,7 @@ class App extends Component {
 	    	let localToken = localStorage.getItem('token')
 	    	if (localToken) {
 	    	this.props.dispatch(setToken(localToken));
+	    	localStorage.clear();
 		    }
 		  }
 	}
