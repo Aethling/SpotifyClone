@@ -5,6 +5,7 @@ import { fetchAlbums } from '../actions/albumActions';
 import { isSelectAlbum } from '../actions/albumActions';
 import { setNowPlaying } from '../actions/songActions';
 import { toggleIsPlaying } from '../actions/songActions';
+import { selectedAlbumImage } from '../actions/songActions';
 import Albums from '../components/albums/Albums';
 import CurrentAlbum from '../components/albums/CurrentAlbum';
 import SongPlayer from '../components/SongPlayer';
@@ -33,7 +34,7 @@ class AlbumsPage extends Component {
 		this.props.dispatch(setNowPlaying(trackUrl));
 		this.props.isPlaying ? this.props.dispatch(toggleIsPlaying(false)) : 
 			this.props.dispatch(toggleIsPlaying(true))
-
+		this.props.dispatch(selectedAlbumImage(this.selectedAlbum.album.images[2].url))
 	}
 	render() {
 		return (
@@ -41,8 +42,9 @@ class AlbumsPage extends Component {
 			{
 				this.props.isAlbumSelected ? ([
 					<CurrentAlbum selectedAlbum={this.selectedAlbum}
-												onItemClick={this.onItemClick}/>,
-					<SongPlayer/>
+												onItemClick={this.onItemClick}
+												key="one"/>,
+					<SongPlayer key="two"/>
 					]):
 					<div>
 						<h1>

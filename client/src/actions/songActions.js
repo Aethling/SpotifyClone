@@ -10,3 +10,9 @@ export function toggleIsPlaying(boolean) {
 		boolean
 	}
 }
+export function selectedAlbumImage(albumImage) {
+	return {
+		type: 'SELECTED_ALBUM_IMAGE',
+		albumImage
+	}
+}

@@ -27,6 +27,11 @@ const albumsReducer = (state = defaultState, action) => {
 				...state,
 				isAlbumSelected: action.boolean
 			}
+		case ('SELECTED_ALBUM_IMAGE'):
+			return {
+				...state,
+				albumImage: action.albumImage
+			}
 		default:
 			return state;
 	}

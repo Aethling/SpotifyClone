@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PlayButton from '../icons/PlayIconSVG';
 import { toggleIsPlaying } from '../../actions/songActions';
 
-const Footer = ({ dispatch, isPlaying, nowPlaying }) => {
+const Footer = ({ dispatch, isPlaying, nowPlaying, albumImage }) => {
 	const mainTogglePlay = () => {
 		isPlaying ? dispatch(toggleIsPlaying(false)) : 
 			dispatch(toggleIsPlaying(true))
@@ -24,8 +24,11 @@ const Footer = ({ dispatch, isPlaying, nowPlaying }) => {
     		{
 	    		nowPlaying &&
 	    			<div>
-		    			<p className="footer-song-name">{nowPlaying.name}</p>
-			    		<p className="footer-artist-name">{nowPlaying.artists[0].name}</p>
+	    				<img className="footer-image" src={albumImage}/>
+			    			<div className="footer-displayText-container">
+				    			<p className="footer-song-name">{nowPlaying.name}</p>
+					    		<p className="footer-artist-name">{nowPlaying.artists[0].name}</p>
+				    		</div>
 		    		</div>
 	    	}
     	</div>
@@ -36,7 +39,8 @@ const Footer = ({ dispatch, isPlaying, nowPlaying }) => {
 const mapStateToProps = state => {
 	return {
 		isPlaying: state.songsReducer.isPlaying,
-		nowPlaying: state.songsReducer.nowPlaying
+		nowPlaying: state.songsReducer.nowPlaying,
+		albumImage: state.albumsReducer.albumImage
 	}
 }
 
