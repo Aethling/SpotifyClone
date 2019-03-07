@@ -33,6 +33,12 @@ const Footer = ({ dispatch, isPlaying, nowPlaying, albumImage }) => {
 		    		</div>
 	    	}
     	</div>
+    	<div className='song-progress-container'>
+	        <p className='timer-start'></p>
+	        <div className='song-progress'>
+	          <div className='song-expired' />
+	        </div>
+	      </div>
     </div>
   )
 }
