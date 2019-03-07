@@ -25,9 +25,6 @@ const SideMenu = ({ title }) => {
 			</li>
 			))
 	}
-	      // <li className="side-menu-item"><Link to="/recent">Recently Played</Link></li>
-	      // <li className="side-menu-item"><Link to="/albums">Albums</Link></li>
-	      // <li className="side-menu-item"><Link to="/artists">Artists</Link></li>
 		return (
 			<ul className='side-menu-container'>
 				<li className={title === 'Home Page' ? 'side-menu-item active': 'side-menu-item'}><Link to="/">Home</Link></li>

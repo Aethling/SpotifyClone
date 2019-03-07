@@ -3,6 +3,7 @@ import userReducer from './userReducer';
 import browseReducer from './browseReducer';
 import titleReducer from './titleReducer';
 import albumsReducer from './albumsReducer';
+import artistsReducer from './artistsReducer';
 import { combineReducers } from 'redux';
 
 export default combineReducers({
@@ -10,6 +11,7 @@ export default combineReducers({
 									songsReducer, 
 									browseReducer,
 									titleReducer,
-									albumsReducer
+									albumsReducer,
+									artistsReducer
 								});
 
