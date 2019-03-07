@@ -20,6 +20,13 @@ const Footer = ({ dispatch, isPlaying, nowPlaying, albumImage }) => {
 							<i className="far fa-pause-circle"></i>
 							</span>
 				}
+		    <div className='song-progress-container'>
+	        <p className='timer-start'></p>
+	        <div className='song-progress'>
+	          <div className='song-expired'>
+	          </div>
+		      </div>
+	    	</div>
     	</div>
     	<div className="footer-displaySongInfo-container">
     		{
@@ -32,13 +39,7 @@ const Footer = ({ dispatch, isPlaying, nowPlaying, albumImage }) => {
 				    		</div>
 		    		</div>
 	    	}
-    	</div>
-    	<div className='song-progress-container'>
-	        <p className='timer-start'></p>
-	        <div className='song-progress'>
-	          <div className='song-expired' />
-	        </div>
-	      </div>
+      </div>
     </div>
   )
 }

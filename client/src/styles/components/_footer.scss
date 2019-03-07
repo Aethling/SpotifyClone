@@ -7,9 +7,11 @@
   bottom: 0px;
   }
  .footer-play-button-container {
- 	text-align: center;
+  text-align: center;
   position: relative;
   top: 10px;
+  width: 500px;
+  margin: auto;
  }
  .footer-play-button {
 	position: relative;
@@ -20,7 +22,7 @@
 }
 .footer-displaySongInfo-container {
   position: relative;
-  top: -68px;
+  top: -83px;
   width: 175px;
   padding: 18px 0px 0px 27px;
   font-size: 16px;
@@ -47,8 +49,9 @@
 }
 .song-progress-container {
   margin-top: -10px;
-  display: flex;
+  display: inline;
   justify-content: center;
+  position: relative;
 }
 
 .song-progress {

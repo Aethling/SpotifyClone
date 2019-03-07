@@ -18,9 +18,9 @@ const SideMenu = ({ title }) => {
 			name: '/artists'
 		}
 	]
-	const renderListItems = (menu) => {
+	const renderListItems = (menu, index) => {
 		return menu.map(item => (
-			<li className={title === item.title ? 'side-menu-item active' : 'side-menu-item'}>
+			<li className={title === item.title ? 'side-menu-item active' : 'side-menu-item'} key={index}>
 				<Link to={item.name}>{item.title}</Link>
 			</li>
 			))
