@@ -17,8 +17,6 @@ class AlbumsPage extends Component {
 		this.props.dispatch(changeTitle('Albums'))
 		this.props.dispatch(fetchAlbums(this.props.token))
 	}
-	//make a back button that can dispatch this action
-		// this.props.dispatch(selectAlbum(false));
 
 	selectedAlbum = null
 

@@ -4,6 +4,7 @@ import PlayButton from '../icons/PlayIconSVG';
 import { toggleIsPlaying } from '../../actions/songActions';
 
 const Footer = ({ dispatch, isPlaying, nowPlaying, albumImage }) => {
+	
 	const mainTogglePlay = () => {
 		isPlaying ? dispatch(toggleIsPlaying(false)) : 
 			dispatch(toggleIsPlaying(true))
