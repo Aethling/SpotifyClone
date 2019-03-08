@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import Header from './header/Header';
 import MainHeader from './mainHeader/mainHeader';
 import Footer from './footer/Footer';
+import Playlists from './playlists/Playlists';
 
 
 
@@ -25,6 +26,7 @@ render() {
       		<div>
 						<div className="left-side-section">
 							 <SideMenu />
+							 <Playlists />
 				    </div>
 				    <div className="header">
 				    	<Header user={this.props.user}/>

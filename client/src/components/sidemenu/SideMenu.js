@@ -31,8 +31,6 @@ const SideMenu = ({ title }) => {
 				<li className={title === 'Browse Categories' ? 'side-menu-item active': 'side-menu-item'}><Link to="/browse">Browse</Link></li>
 	      <h3 className='user-library-header'>Your Library</h3>
 	      {renderListItems(menu)}
-	      <h3 className="user-library-header">Playlists</h3>
-	      <li className="side-menu-item">Discover Weekly</li>
 	    </ul>
 		)
 	}
