@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { changeTitle } from '../../actions/titleActions';
 import { Link } from 'react-router-dom';
 import { fetchPlaylists } from '../../actions/playlistActions';
-import { currentPlaylist } from '../../actions/playlistActions';
+import { currentPlaylistID } from '../../actions/playlistActions';
 
 class Playlists extends Component {
 
@@ -15,7 +15,7 @@ class Playlists extends Component {
 		return this.props.playlists.items.map((item, index) => {
 			const actions = () => {
 				this.props.dispatch(changeTitle(item.name));
-				this.props.dispatch(currentPlaylist(item))
+				this.props.dispatch(currentPlaylistID(item.id))
 			}
 			return (
 			<li className={this.props.title === item.name ? 'side-menu-item active' : 'side-menu-item'} 

@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchPlaylistSongs } from '../actions/playlistActions';
 
 
 class PlaylistsPage extends Component {
+	fetchSongs() {
+		this.props.dispatch(fetchPlaylistSongs(this.props.token, this.props.playlistID))
+	}
 	render() {
 		return (
 			<div>
+				{this.props.playlistID && this.fetchSongs()}
 				<p>this is the playlists page</p>
 			</div>
 		);
@@ -13,7 +18,8 @@ class PlaylistsPage extends Component {
 }
 const mapStateToProps = state => {
 	return {
-
+		playlistID: state.playlistsReducer.playlistID,
+		token: state.userReducer.token
 	}
 }
-export default PlaylistsPage
+export default connect(mapStateToProps)(PlaylistsPage);

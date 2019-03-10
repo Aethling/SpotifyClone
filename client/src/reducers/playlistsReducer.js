@@ -17,11 +17,29 @@ const playlistsReducer = (state = {}, action) => {
 				...state,
 				playlistsPending: false,
 				playlistsError: action.error
-			}
-		case ('CURRENT_PLAYLIST'):
+			}	
+		case ("FETCH_PLAYLIST_SONGS_REQUEST"):
 			return {
 				...state,
-				currentPlaylist: action.playlist
+				playlistSongsPending: true
+			}
+		case ('FETCH_PLAYLIST_SONGS_REQUEST_SUCCESS'):
+			return {
+				...state,
+				playlistSongs: action.playlistSongs,
+				playlistSongsPending: false,
+				playlistSongsError: false
+			}
+		case ('FETCH_PLAYLIST_SONGS_REQUEST_ERROR'):
+			return {
+				...state,
+				playlistSongsPending: false,
+				playlistSongsError: action.error
+			}
+		case ('CURRENT_PLAYLIST_ID'):
+			return {
+				...state,
+				playlistID: action.playlistID
 			}
 		default:
 			return state;
