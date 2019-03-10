@@ -15,6 +15,12 @@ export const fetchPlaylistsRequestError = error => {
 		error
 	}
 };
+export const currentPlaylist = playlist => {
+	return {
+		type: 'CURRENT_PLAYLIST',
+		playlist
+	}
+};
 
 export const fetchPlaylists = token => {
 	return dispatch => {

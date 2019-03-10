@@ -5,6 +5,7 @@ import ArtistsPage from '../pages/ArtistsPage';
 import AlbumsPage from '../pages/AlbumsPage';
 import HomePage from '../pages/HomePage';
 import RecentlyPlayedPage from '../pages/RecentlyPlayedPage';
+import PlaylistsPage from '../pages/PlaylistsPage';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import NotFoundPage from '../pages/NotFoundPage';
 import { connect } from 'react-redux';
@@ -40,6 +41,7 @@ render() {
 								<Route path="/" exact render={ () => <HomePage token={this.props.token}/>}/>
 								<Route path="/browse" render={ () => <BrowsePage token={this.props.token}/> }/>
 								<Route path="/recent" render={ () => <RecentlyPlayedPage token={this.props.token}/> }/>
+								<Route path="/playlists" render={ () => <PlaylistsPage token={this.props.token}/> }/>
 								<Route path="/artists" component={ArtistsPage} />
 								<Route path="/albums" component={AlbumsPage} />
 				        <Route path="/notfound" component={NotFoundPage} />

@@ -18,6 +18,11 @@ const playlistsReducer = (state = {}, action) => {
 				playlistsPending: false,
 				playlistsError: action.error
 			}
+		case ('CURRENT_PLAYLIST'):
+			return {
+				...state,
+				currentPlaylist: action.playlist
+			}
 		default:
 			return state;
 	}

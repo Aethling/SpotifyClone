@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { changeTitle } from '../../actions/titleActions';
+import { Link } from 'react-router-dom';
 import { fetchPlaylists } from '../../actions/playlistActions';
+import { currentPlaylist } from '../../actions/playlistActions';
 
 class Playlists extends Component {
 
@@ -11,13 +13,17 @@ class Playlists extends Component {
 	
 	renderPlaylists = () => {
 		return this.props.playlists.items.map((item, index) => {
+			const actions = () => {
+				this.props.dispatch(changeTitle(item.name));
+				this.props.dispatch(currentPlaylist(item))
+			}
 			return (
 			<li className={this.props.title === item.name ? 'side-menu-item active' : 'side-menu-item'} 
 					key={index} 
-					onClick={() => this.props.dispatch(changeTitle(item.name))}
-
-					>{item.name}</li>
-		)
+					onClick={actions}>
+				<Link to="/playlists">{item.name}</Link>
+			</li>
+			)
 		})
 	}
 
