@@ -25,7 +25,6 @@ class RecentlyPlayedPage extends Component {
 		this.props.isPlaying ? this.props.dispatch(toggleIsPlaying(false)) : 
 			this.props.dispatch(toggleIsPlaying(true))
 		this.props.dispatch(selectedAlbumImage(this.props.recentSongs.items[index].track.album.images[2].url))
-
 	}
  	
 	render() {

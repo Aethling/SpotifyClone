@@ -1,4 +1,8 @@
-const playlistsReducer = (state = {}, action) => {
+const defaultState = {
+	playlistSongsPending: true,
+	playListIDPending: false
+}
+const playlistsReducer = (state = defaultState, action) => {
 	switch (action.type) {
 		case ("FETCH_PLAYLISTS_REQUEST"):
 			return {
@@ -39,7 +43,8 @@ const playlistsReducer = (state = {}, action) => {
 		case ('CURRENT_PLAYLIST_ID'):
 			return {
 				...state,
-				playlistID: action.playlistID
+				playlistID: action.playlistID,
+				playListIDPending: true
 			}
 		default:
 			return state;
