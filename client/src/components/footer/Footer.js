@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PlayButton from '../icons/PlayIconSVG';
 import { toggleIsPlaying } from '../../actions/songActions';
+import SongProgressBar from './SongProgressBar';
 
 const Footer = ({ dispatch, isPlaying, nowPlaying, albumImage }) => {
 	
@@ -20,13 +21,7 @@ const Footer = ({ dispatch, isPlaying, nowPlaying, albumImage }) => {
 							<i className="far fa-pause-circle"></i>
 							</span>
 				}
-		    <div className='song-progress-container'>
-	        <p className='timer-start'></p>
-	        <div className='song-progress'>
-	          <div className='song-expired'>
-	          </div>
-		      </div>
-	    	</div>
+		    <SongProgressBar />
     	</div>
     	<div className="footer-displaySongInfo-container">
     		{
