@@ -44,14 +44,9 @@ class AlbumsPage extends Component {
 												key="one"/>,
 					<SongPlayer key="two"/>
 					]):
-					<div>
-						<h1>
-							These are your saved albums
-						</h1>
 						<div>
 							<Albums handleAlbumClick={this.handleAlbumClick}/>
 						</div>
-					</div>
 			}
 			</div>
 		)

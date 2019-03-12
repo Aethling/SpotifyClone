@@ -42,13 +42,7 @@ class ArtistsPage extends Component {
 				// 								onItemClick={this.onItemClick}
 				// 								key="one"/>,
 				// 	<SongPlayer key="two"/> ]):
-					<div>
-						<h1>
-							These are your saved albums
-						</h1>
-						<div>
-						</div>
-					</div>
+					
 			}
 			</div>
 		)
