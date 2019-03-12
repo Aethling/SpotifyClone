@@ -8,9 +8,7 @@ import SongList from '../components/songList/SongList';
 import SongPlayer from '../components/SongPlayer';
 
 class PlaylistsPage extends Component {
-	// fetchSongs() {
-	// 	this.props.dispatch(fetchPlaylistSongs(this.props.token, this.props.playlistID))
-	// }
+	
 	onItemClick = (trackUrl, index) => {
 		// !this.props.nowPlaying && this.props.dispatch(setNowPlaying(trackUrl));
 		this.props.dispatch(setNowPlaying(trackUrl));
@@ -19,7 +17,6 @@ class PlaylistsPage extends Component {
 		this.props.dispatch(selectedAlbumImage(this.props.playlistSongs.items[index].track.album.images[2].url))
 	}
 	render() {
-				// {(this.props.playlistID && this.props.playlistIDPending) && this.fetchSongs()}
 		return (
 			<div>
 				{
