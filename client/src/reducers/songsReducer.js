@@ -46,7 +46,7 @@ export const songsReducer = (state = defaultState, action) => {
 			return {
 				...state,
 				fetchSongsError: true,
-				error: actions.error
+				error: action.error
 			}
 		default:
 			return state;

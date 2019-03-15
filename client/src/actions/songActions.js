@@ -1,3 +1,5 @@
+import uniqBy from 'lodash/uniqBy';
+
 export function setNowPlaying(track) {
 	return {
 		type: 'SET_NOW_PLAYING',
@@ -34,7 +36,20 @@ export const fetchSongs = token => {
 				headers: {'Authorization': 'Bearer ' + token}
 		})
 			.then(blob => blob.json())
-			.then(res => dispatch(fetchSongsRequestSuccess(res)))
+			.then(res => {
+				let artistIds = uniqBy(res.items, (item) => {
+					return item.track.artists[0].id
+				}).join('');
+				console.log(artistIds);
+				dispatch(setArtistIDs(artistIds))
+				dispatch(fetchSongsRequestSuccess(res.items))
+			})
 			.catch(err => dispatch(fetchSongsRequestError(err)))
 	}
 }
+export const setArtistIDs = artistIDs => {
+	return {
+		type: 'SET_ARTIST_IDS',
+		artistIDS
+	}
+};
