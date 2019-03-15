@@ -1,3 +1,9 @@
+export const setArtistIDs = artistIDs => {
+	return {
+		type: 'SET_ARTIST_IDS',
+		artistIDS
+	}
+};
 export const fetchArtistsRequest = () => {
 	return {
 		type: 'FETCH_ARTISTS_REQUEST'

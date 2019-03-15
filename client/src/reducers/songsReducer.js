@@ -3,7 +3,8 @@ const defaultState = {
 	recentSongs: null,
 	songId: null,
 	isPlaying: false,
-	nowPlaying: null
+	nowPlaying: null,
+	songs: null
 }
 
 export const songsReducer = (state = defaultState, action) => {
@@ -35,6 +36,17 @@ export const songsReducer = (state = defaultState, action) => {
 			return {
 				...state,
 				isPlaying: action.boolean
+			}
+		case "FETCH_SONGS_REQUEST_SUCCESS":
+			return {
+				...state,
+				songs: action.songs
+			}
+			case "FETCH_SONGS_REQUEST_ERROR":
+			return {
+				...state,
+				fetchSongsError: true,
+				error: actions.error
 			}
 		default:
 			return state;

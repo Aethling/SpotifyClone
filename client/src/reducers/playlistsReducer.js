@@ -46,6 +46,11 @@ const playlistsReducer = (state = defaultState, action) => {
 				playlistID: action.playlistID,
 				playListIDPending: true
 			}
+		case ('SET_PLAYLIST_IMAGE'):
+			return {
+				...state,
+				playlistImage: action.playlistImage,
+			}
 		default:
 			return state;
 	}

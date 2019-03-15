@@ -5,11 +5,6 @@ import Dashboard from './components/Dashboard';
 import { setToken } from './actions/tokenActions';
 import { getUser } from './actions/user';
 
-//call gethashParams in constructor and sets the token
-//and the logged in
-//action to set token
-//action to see if logged in or not
-
 class App extends Component {
 
 	extractHashParams() {
@@ -30,25 +25,28 @@ class App extends Component {
 	    	this.props.dispatch(setToken(localToken));
 		    }
 		  }
-		  //resets local storage after 1 hour
-			let	values = new Array();
-			const	oneday = new Date();
-			oneday.setHours(oneday.getHours() + 1); //one hour from now
-    	let localToken = localStorage.getItem('token')
-			values.push(localToken);
-			values.push(oneday);
-			try {
-			  localStorage.setItem(0, values.join(";"));
-			} 
-			catch (e) { }
-			//check if past expiration date
-			let theValues = localStorage.getItem(0).split(";");
-			if (theValues[1] < new Date()) {
-			    localStorage.removeItem(0);
-			}
 	}
+	// clearLocalStorageTimer() {
+	// 	  //resets local storage after 1 hour
+	// 		let	values = new Array();
+	// 		const	oneHour = new Date();
+	// 		oneHour.setHours(oneHour.getHours() + 1); //one hour from now
+ //    	let localToken = localStorage.getItem('token')
+	// 		values.push(localToken);
+	// 		values.push(oneHour);
+	// 		try {
+	// 		  localStorage.setItem(0, values.join(";"));
+	// 		} 
+	// 		catch (e) { }
+	// 		//check if past expiration date
+	// 		let theValues = localStorage.getItem(0).split(";");
+	// 		if (theValues[1] < new Date()) {
+	// 		    localStorage.removeItem(0);
+	// 		}
+	// }
 	componentDidMount(){
 		if(!this.props.isLoggedIn){
+			// this.clearLocalStorageTimer();
 			this.extractHashParams();
 		}
 	}
@@ -57,8 +55,7 @@ class App extends Component {
 			this.props.dispatch(getUser(this.props.token))
 		}
 	}
-	//add data we are interested in tracking to an array
- 
+	
 	render() {
 		if (this.props.isUserSuccess) {
 			return (

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { changeTitle } from '../actions/titleActions';
 import { connect } from 'react-redux';
 import { fetchArtists } from '../actions/artistActions';
+import { fetchSongs } from '../actions/songActions';
 import { setNowPlaying } from '../actions/songActions';
 import { toggleIsPlaying } from '../actions/songActions';
 import { selectedAlbumImage } from '../actions/songActions';
@@ -13,7 +14,7 @@ class ArtistsPage extends Component {
 
 	componentDidMount() {
 		this.props.dispatch(changeTitle('Artists'))
-		this.props.dispatch(fetchArtists(this.props.token))
+		this.props.dispatch(fetchSongs(this.props.token))
 	}
 
 	selectedArtist = null

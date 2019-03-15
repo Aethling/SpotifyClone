@@ -61,3 +61,9 @@ export const fetchPlaylistSongs = (token, ID) => {
 			.catch(err => dispatch(fetchPlaylistSongsRequestError(err)))
 	}
 }
+export const setPlaylistImage = playlistImage => {
+	return {
+		type: 'SET_PLAYLIST_IMAGE',
+		playlistImage
+	}
+};

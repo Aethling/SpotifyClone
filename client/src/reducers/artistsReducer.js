@@ -1,5 +1,6 @@
 const defaultState = {
-	isArtistSelected: false
+	isArtistSelected: false,
+	artistIDs: ''
 }
 
 const albumsReducer = (state = defaultState, action) => {
@@ -21,6 +22,11 @@ const albumsReducer = (state = defaultState, action) => {
 				...state,
 				artistsPending: false,
 				artistsError: action.error
+			}
+		case ('SET_ARTIST_IDS'):
+			return {
+				...state,
+				artistIDs: action.artistIDs
 			}
 		default:
 			return state;

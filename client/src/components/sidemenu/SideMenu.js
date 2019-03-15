@@ -20,7 +20,7 @@ const SideMenu = ({ title }) => {
 	]
 	const renderListItems = (menu, index) => {
 		return menu.map(item => (
-			<li className={title === item.title ? 'side-menu-item active' : 'side-menu-item'} key={index}>
+			<li className={title === item.title ? 'side-menu-item active' : 'side-menu-item'} key={item.title}>
 				<Link to={item.name}>{item.title}</Link>
 			</li>
 			))
