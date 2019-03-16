@@ -1,9 +1,4 @@
-export const setArtistIDs = artistIDs => {
-	return {
-		type: 'SET_ARTIST_IDS',
-		artistIDS
-	}
-};
+
 export const fetchArtistsRequest = () => {
 	return {
 		type: 'FETCH_ARTISTS_REQUEST'
@@ -21,10 +16,10 @@ export const fetchArtistsRequestError = (error) => {
 		error
 	}
 }
-export const fetchArtists = (token) => {
+export const fetchArtists = (token, IDs) => {
 	return dispatch => {
 		dispatch(fetchArtistsRequest())
-		return fetch('https://api.spotify.com/v1/artists', {
+		return fetch(`https://api.spotify.com/v1/artists?ids=${IDs}`, {
 				headers: {'Authorization': 'Bearer ' + token}
 		})
 			.then(blob => blob.json())

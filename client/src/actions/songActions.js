@@ -1,4 +1,5 @@
 import uniqBy from 'lodash/uniqBy';
+import { fetchArtists } from './artistActions';
 
 export function setNowPlaying(track) {
 	return {
@@ -37,19 +38,21 @@ export const fetchSongs = token => {
 		})
 			.then(blob => blob.json())
 			.then(res => {
-				let artistIds = uniqBy(res.items, (item) => {
-					return item.track.artists[0].id
-				}).join('');
-				console.log(artistIds);
-				dispatch(setArtistIDs(artistIds))
+				let artistIDs = uniqBy(res.items, (item) => {
+					return item.track.artists[0].name
+				}).map(item => item.track.artists[0].id).join(',');
+				console.log(artistIDs);
+				dispatch(setArtistIDs(artistIDs))
 				dispatch(fetchSongsRequestSuccess(res.items))
+				dispatch(fetchArtists(token, artistIDs))
 			})
 			.catch(err => dispatch(fetchSongsRequestError(err)))
 	}
 }
+
 export const setArtistIDs = artistIDs => {
 	return {
 		type: 'SET_ARTIST_IDS',
-		artistIDS
+		artistIDs
 	}
 };
