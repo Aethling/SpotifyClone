@@ -3,15 +3,13 @@ import { connect } from 'react-redux';
 import { isSelectAlbum } from '../../actions/albumActions';
 import { msToTime } from '../../config/utils';
 
-const CurrentAlbum = ({selectedAlbum, dispatch, onItemClick, isPlaying}) => {
-
-	
+const CurrentAlbum = ({songs, dispatch, onItemClick, isPlaying}) => {
 
 	const renderSongs = () => {
-		return selectedAlbum.album.tracks.items.map((item, index) => {
+		return songs.map((item, index) => {
 					return (
 						<li className="songList-item-container" key={index}>
-							<div className="buttons-container" onClick={() => onItemClick(item)}>
+							<div className="buttons-container" onClick={() => onItemClick(item, index)}>
 								{!isPlaying ?
 									<span className="play-icon">
 										<i className="far fa-play-circle"></i>
@@ -38,7 +36,7 @@ const CurrentAlbum = ({selectedAlbum, dispatch, onItemClick, isPlaying}) => {
   return (
   	<div className="songList-container">
 		  	<i className="fas fa-arrow-left" onClick={() => dispatch(isSelectAlbum(false))}></i>
-		  	<span className="back-arrow-text">Back to Albums</span>
+		  	<span className="back-arrow-text">Back</span>
 				<div className="song-header-container">
 					<div className="buttons-container"></div>
 					<div className="song-header-item">Title</div>
@@ -52,7 +50,7 @@ const CurrentAlbum = ({selectedAlbum, dispatch, onItemClick, isPlaying}) => {
 }
 const mapStateToProps = state => {
 	return {
-		isPlaying: state.songsReducer.isPlaying,
+		isPlaying: state.songsReducer.isPlaying
 	}
 }
 export default connect(mapStateToProps)(CurrentAlbum);

@@ -18,10 +18,12 @@ class AlbumsPage extends Component {
 		this.props.dispatch(fetchAlbums(this.props.token))
 	}
 
-	selectedAlbum = null
+	selectedAlbum = null;
+	selectedAlbumSongs = null;
 
 	handleAlbumClick = (index) => {
-		this.selectedAlbum = this.props.albums.items[index]
+		this.selectedAlbum = this.props.albums.items[index].album;
+		this.selectedAlbumSongs = this.props.albums.items[index].album.tracks.items;
 		this.props.dispatch(isSelectAlbum(true))
 	}
 	componentWillUnmount() {
@@ -32,14 +34,14 @@ class AlbumsPage extends Component {
 		this.props.dispatch(setNowPlaying(trackUrl));
 		this.props.isPlaying ? this.props.dispatch(toggleIsPlaying(false)) : 
 			this.props.dispatch(toggleIsPlaying(true))
-		this.props.dispatch(selectedAlbumImage(this.selectedAlbum.album.images[2].url))
+		this.props.dispatch(selectedAlbumImage(this.selectedAlbum.images[2].url))
 	}
 	render() {
 		return (
 			<div>
 			{
 				this.props.isAlbumSelected ? ([
-					<CurrentAlbum selectedAlbum={this.selectedAlbum}
+					<CurrentAlbum songs={this.selectedAlbumSongs}
 												onItemClick={this.onItemClick}
 												key="one"/>,
 					<SongPlayer key="two"/>
