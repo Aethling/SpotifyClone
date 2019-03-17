@@ -6,6 +6,7 @@ import { isSelectAlbum } from '../actions/albumActions';
 import { setNowPlaying } from '../actions/songActions';
 import { toggleIsPlaying } from '../actions/songActions';
 import { selectedAlbumImage } from '../actions/songActions';
+import { isArtistSelected } from '../actions/artistActions';
 import Albums from '../components/albums/Albums';
 import CurrentAlbum from '../components/albums/CurrentAlbum';
 import SongPlayer from '../components/SongPlayer';
@@ -24,7 +25,8 @@ class AlbumsPage extends Component {
 	handleAlbumClick = (index) => {
 		this.selectedAlbum = this.props.albums.items[index].album;
 		this.selectedAlbumSongs = this.props.albums.items[index].album.tracks.items;
-		this.props.dispatch(isSelectAlbum(true))
+		this.props.dispatch(isSelectAlbum(true));
+		this.props.dispatch(isArtistSelected(false))
 	}
 	componentWillUnmount() {
 		this.props.dispatch(isSelectAlbum(false))
@@ -46,9 +48,7 @@ class AlbumsPage extends Component {
 												key="one"/>,
 					<SongPlayer key="two"/>
 					]):
-						<div>
-							<Albums handleAlbumClick={this.handleAlbumClick}/>
-						</div>
+					<Albums handleAlbumClick={this.handleAlbumClick}/>
 			}
 			</div>
 		)

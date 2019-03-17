@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { isSelectAlbum } from '../../actions/albumActions';
+import { isArtistSelected } from '../../actions/artistActions';
 import { msToTime } from '../../config/utils';
 
 const CurrentAlbum = ({songs, dispatch, onItemClick, isPlaying}) => {
@@ -35,7 +36,10 @@ const CurrentAlbum = ({songs, dispatch, onItemClick, isPlaying}) => {
   		// <button }>Back to Albums</button>
   return (
   	<div className="songList-container">
-		  	<i className="fas fa-arrow-left" onClick={() => dispatch(isSelectAlbum(false))}></i>
+		  	<i className="fas fa-arrow-left" onClick={() => {
+		  		dispatch(isSelectAlbum(false))
+		  		dispatch(isArtistSelected(false))
+		  	}}></i>
 		  	<span className="back-arrow-text">Back</span>
 				<div className="song-header-container">
 					<div className="buttons-container"></div>

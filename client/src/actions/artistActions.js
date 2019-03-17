@@ -44,6 +44,12 @@ export const fetchSelectedArtistRequestError = (error) => {
 		error
 	}
 }
+export const isArtistSelected = (boolean) => {
+	return {
+		type: 'IS_ARTIST_SELECTED',
+		boolean
+	}
+}
 export const fetchSelectedArtist = (token, ID) => {
 	return dispatch => {
 		dispatch(fetchSelectedArtistRequest())

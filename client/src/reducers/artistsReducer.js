@@ -38,14 +38,18 @@ const albumsReducer = (state = defaultState, action) => {
 				...state,
 				selectedArtistTracks: action.selectedArtistTracks,
 				selectedArtistPending: false,
-				selectedArtistError: false,
-				isArtistSelected: true
+				selectedArtistError: false
 			}
 		case ('FETCH_SELECTED_ARTIST_REQUEST_ERROR'):
 			return {
 				...state,
 				selectedArtistPending: false,
 				selectedArtistError: action.error
+			}
+		case ('IS_ARTIST_SELECTED'):
+			return {
+				...state,
+				isArtistSelected: action.boolean
 			}
 		default:
 			return state;
