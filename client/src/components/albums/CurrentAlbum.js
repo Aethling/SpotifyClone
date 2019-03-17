@@ -34,9 +34,11 @@ const CurrentAlbum = ({selectedAlbum, dispatch, onItemClick, isPlaying}) => {
 					)
 				})
 	}
+  		// <button }>Back to Albums</button>
   return (
   	<div className="songList-container">
-  		<button onClick={() => dispatch(isSelectAlbum(false))}>Back to Albums</button>
+		  	<i className="fas fa-arrow-left" onClick={() => dispatch(isSelectAlbum(false))}></i>
+		  	<span className="back-arrow-text">Back to Albums</span>
 				<div className="song-header-container">
 					<div className="buttons-container"></div>
 					<div className="song-header-item">Title</div>

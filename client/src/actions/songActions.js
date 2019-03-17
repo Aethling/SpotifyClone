@@ -41,10 +41,9 @@ export const fetchSongs = token => {
 				let artistIDs = uniqBy(res.items, (item) => {
 					return item.track.artists[0].name
 				}).map(item => item.track.artists[0].id).join(',');
-				console.log(artistIDs);
-				dispatch(setArtistIDs(artistIDs))
-				dispatch(fetchSongsRequestSuccess(res.items))
-				dispatch(fetchArtists(token, artistIDs))
+				dispatch(setArtistIDs(artistIDs));
+				dispatch(fetchSongsRequestSuccess(res.items));
+				dispatch(fetchArtists(token, artistIDs));
 			})
 			.catch(err => dispatch(fetchSongsRequestError(err)))
 	}

@@ -27,3 +27,31 @@ export const fetchArtists = (token, IDs) => {
 			.catch(err => dispatch(fetchArtistsRequestError(err)))
 	}
 }
+export const fetchSelectedArtistRequest = () => {
+	return {
+		type: 'FETCH_SELECTED_ARTIST_REQUEST'
+	}
+}
+export const fetchSelectedArtistRequestSuccess = (selectedArtistTracks) => {
+	return {
+		type: 'FETCH_SELECTED_ARTIST_REQUEST_SUCCESS',
+		selectedArtistTracks
+	}
+}
+export const fetchSelectedArtistRequestError = (error) => {
+	return {
+		type: 'FETCH_SELECTED_ARTIST_REQUEST_ERROR',
+		error
+	}
+}
+export const fetchSelectedArtist = (token, ID) => {
+	return dispatch => {
+		dispatch(fetchSelectedArtistRequest())
+		return fetch(`https://api.spotify.com/v1/artists/${ID}/top-tracks?country=US`, {
+				headers: {'Authorization': 'Bearer ' + token}
+		})
+			.then(blob => blob.json())
+			.then(res => dispatch(fetchSelectedArtistRequestSuccess(res)))
+			.catch(err => dispatch(fetchSelectedArtistRequestError(err)))
+	}
+}

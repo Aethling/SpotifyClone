@@ -1,11 +1,14 @@
 
 .album-images {
 	height: 200px;
-	border-radius: 50%;
+	width: 200px;
+	&:hover {
+		opacity: 0.3
+	}
 }
 .album-list {
 	display: inline-block;
-	margin: 16px;
+	margin: 8px;
 	text-align: center;
 	width: 200px;
 	vertical-align: top;
@@ -24,4 +27,17 @@
 .fa-arrow-alt-circle-left {
 	height: 50px;
 	width: auto;
+}
+.fa-arrow-left {
+	transform: scale(3.0);
+	margin: 10px 10px 14px 18px;
+	&:hover {
+		cursor: pointer;
+	}
+}
+.back-arrow-text {
+  font-size: 13px;
+  margin-left: 10px;
+  position: relative;
+  top: 1.5px;
 }

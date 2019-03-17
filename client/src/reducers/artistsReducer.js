@@ -28,6 +28,25 @@ const albumsReducer = (state = defaultState, action) => {
 				...state,
 				artistIDs: action.artistIDs
 			}
+		case ("FETCH_SELECTED_ARTIST_REQUEST"):
+			return {
+				...state,
+				selectedArtistPending: true
+			}
+		case ('FETCH_SELECTED_ARTIST_REQUEST_SUCCESS'):
+			return {
+				...state,
+				selectedArtistTracks: action.selectedArtistTracks,
+				selectedArtistPending: false,
+				selectedArtistError: false,
+				isArtistSelected: true
+			}
+		case ('FETCH_SELECTED_ARTIST_REQUEST_ERROR'):
+			return {
+				...state,
+				selectedArtistPending: false,
+				selectedArtistError: action.error
+			}
 		default:
 			return state;
 	}
