@@ -1,0 +1,22 @@
+.artist-images {
+	height: 200px;
+	width: 200px;
+	border-radius: 50%;
+	&:hover {
+		opacity: 0.3
+	}
+}
+.artist-list {
+	display: inline-block;
+	margin: 16px;
+	text-align: center;
+	width: 200px;
+	vertical-align: top;
+	&:hover {
+		cursor: pointer;
+	}
+}
+.artist-name {
+	font-size: 14px;
+	margin: 12px;
+}
