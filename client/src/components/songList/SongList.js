@@ -9,34 +9,34 @@ const SongList = ({ songs, onItemClick, isPlaying }) => {
 
 	const renderSongs = () => {
 		return songs.items.map((item, index) => {
-							return (
-								<li className="songList-item-container" key={index}>
-									<div className="buttons-container" onClick={() => onItemClick(item.track, index)}>
-										{!isPlaying ?
-											<span className="play-icon">
-												<i className="far fa-play-circle"></i>
-											</span> : 
-											<span className="play-icon">
-												<i className="far fa-pause-circle"></i>
-											</span>
-								}
-									</div>
-									<p className="songList-item">
-										{item.track.name}
-									</p>
-									<p className="songList-item">
-										{item.track.artists[0].name}
-									</p>
-									<p className="songList-item">
-										{item.track.album.name}
-									</p>
-									<p className="songList-item">
-								{msToTime(item.track.duration_ms)}
-									</p>
-								</li>
-							)
-						})
-	}
+			return (
+				<li className="songList-item-container" key={index}>
+					<div className="buttons-container" onClick={() => onItemClick(item.track, index)}>
+						{!isPlaying ?
+							<span className="play-icon">
+								<i className="far fa-play-circle"></i>
+							</span> : 
+							<span className="play-icon">
+								<i className="far fa-pause-circle"></i>
+							</span>
+				}
+					</div>
+					<p className="songList-item">
+						{item.track.name}
+					</p>
+					<p className="songList-item">
+						{item.track.artists[0].name}
+					</p>
+					<p className="songList-item">
+						{item.track.album.name}
+					</p>
+					<p className="songList-item">
+				{msToTime(item.track.duration_ms)}
+					</p>
+				</li>
+			)
+		})
+}
 	return (
 		<div className="songList-container">
 				<div className="song-header-container">
