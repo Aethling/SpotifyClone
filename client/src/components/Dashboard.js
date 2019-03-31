@@ -23,9 +23,9 @@ class Dashboard extends Component {
 render() {
 		return (
 		  <div className='App'>
-      	<BrowserRouter>
+			<BrowserRouter>
       		<div>
-						<div className="left-side-section">
+					<div className="left-side-section">
 							 <SideMenu />
 							 <Playlists />
 				    </div>
