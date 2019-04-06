@@ -2,21 +2,23 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PlayButton from '../icons/PlayIconSVG';
 import { toggleIsPlaying } from '../../actions/songActions';
+import { setNowPlaying } from '../../actions/songActions';
 import SongControls from '../songControls/SongControls';
 
 const Footer = ({ dispatch, isPlaying, nowPlaying, albumImage }) => {
 	
 	const mainTogglePlay = () => {
-		isPlaying ? dispatch(toggleIsPlaying(false)) : 
+		isPlaying ? dispatch(setNowPlaying(false)) : 
 			dispatch(toggleIsPlaying(true))
 	}
-	const stepBack = () => {
-		console.log("hi")
+	const stepBack = (trackUrl) => {
+		dispatch(setNowPlaying(trackUrl));
+		console.log(nowPlaying)
 	}
   return (
     <div className="footer-container">
     	<div className="footer-play-button-container">
-				<i className="fas fa-step-backward step" onClick={stepBack}></i>
+				<i className="fas fa-step-backward step" onClick={() => stepBack(nowPlaying.preview_url)}></i>
 	    	{!isPlaying ?
 						<span className="footer-play-button" onClick={mainTogglePlay}>
 							<i className="far fa-play-circle"></i>

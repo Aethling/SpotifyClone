@@ -3,10 +3,6 @@ import { connect } from 'react-redux';
 import moment from 'moment';
 
 class SongControls extends Component {
-	//start with 0 time in state
-	//function that counts up from 0 to 30 every second
-	//Every time the second tics up, set state to that number
-	//console log the state
 	state = {
 		elapsedTime: 0
 	}
