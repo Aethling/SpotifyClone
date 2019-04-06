@@ -10,17 +10,22 @@ const Footer = ({ dispatch, isPlaying, nowPlaying, albumImage }) => {
 		isPlaying ? dispatch(toggleIsPlaying(false)) : 
 			dispatch(toggleIsPlaying(true))
 	}
+	const stepBack = () => {
+		console.log("hi")
+	}
   return (
     <div className="footer-container">
-    	<div className="footer-play-button-container" onClick={mainTogglePlay}>
+    	<div className="footer-play-button-container">
+				<i className="fas fa-step-backward step" onClick={stepBack}></i>
 	    	{!isPlaying ?
-						<span className="footer-play-button">
+						<span className="footer-play-button" onClick={mainTogglePlay}>
 							<i className="far fa-play-circle"></i>
 						</span> : 
-						<span className="footer-play-button">
+						<span className="footer-play-button" onClick={mainTogglePlay}>
 							<i className="far fa-pause-circle"></i>
 							</span>
 				}
+				<i className="fas fa-step-forward step"></i>
 				<SongControls />
     	</div>
     	<div className="footer-displaySongInfo-container">

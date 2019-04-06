@@ -69,10 +69,27 @@
   top: -20px;
   right: 10px;
   font-size: 14px;
+  color: $lighterGrey;
 }
 .timer-end {
   position: relative;
   font-size: 14px;
   top: -20px;
   left: 10px;
+  color: $lighterGrey;
+}
+.step {
+  position: relative;
+  position: relative;
+  color: $lighterGrey;
+  bottom: 7px;
+  font-size: 17px;
+}
+.fa-step-backward {
+  right: 36px;
+  
+}
+.fa-step-forward {
+  left: 36px;
+  
 }
