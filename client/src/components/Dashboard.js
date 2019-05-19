@@ -16,6 +16,7 @@ import Playlists from './playlists/Playlists';
 
 
 
+<<<<<<< HEAD
 const Dashboard = ({token, user}) => {
 	return (
 	  <div className='App'>

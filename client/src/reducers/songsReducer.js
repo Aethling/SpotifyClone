@@ -4,7 +4,8 @@ const defaultState = {
 	songId: null,
 	isPlaying: false,
 	nowPlaying: null,
-	songs: null
+	songs: null,
+	songTime: 0
 }
 
 export const songsReducer = (state = defaultState, action) => {
@@ -42,11 +43,16 @@ export const songsReducer = (state = defaultState, action) => {
 				...state,
 				songs: action.songs
 			}
-			case "FETCH_SONGS_REQUEST_ERROR":
+		case "FETCH_SONGS_REQUEST_ERROR":
 			return {
 				...state,
 				fetchSongsError: true,
 				error: action.error
+			}
+		case "INCREASE_SONG_TIME":
+			return {
+				...state,
+				songTime: action.time
 			}
 		default:
 			return state;
