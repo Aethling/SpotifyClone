@@ -8,17 +8,18 @@ import SongControls from '../songControls/SongControls';
 const Footer = ({ dispatch, isPlaying, nowPlaying, albumImage }) => {
 	
 	const mainTogglePlay = () => {
-		isPlaying ? dispatch(setNowPlaying(false)) : 
+		isPlaying ? dispatch(toggleIsPlaying(false)) : 
 			dispatch(toggleIsPlaying(true))
 	}
-	const stepBack = (trackUrl) => {
-		dispatch(setNowPlaying(trackUrl));
-		console.log(nowPlaying)
+	const stepBack = () => {
+		dispatch(toggleIsPlaying(false))
+		// dispatch(setNowPlaying(nowPlaying.preview_url));
+		console.log(nowPlaying.preview_url)
 	}
   return (
     <div className="footer-container">
     	<div className="footer-play-button-container">
-				<i className="fas fa-step-backward step" onClick={() => stepBack(nowPlaying.preview_url)}></i>
+				<i className="fas fa-step-backward step" onClick={stepBack}></i>
 	    	{!isPlaying ?
 						<span className="footer-play-button" onClick={mainTogglePlay}>
 							<i className="far fa-play-circle"></i>
